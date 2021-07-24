@@ -25,7 +25,6 @@ function App() {
         }
     }
 
-
     return (
     <div className={""} ref={root} onScroll={bodyScroll}>
       <Header></Header>
