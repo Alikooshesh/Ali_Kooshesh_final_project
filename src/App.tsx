@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './App.css';
+import Header from "./components/stableParts/header/header";
 
 
 function App() {
@@ -10,10 +11,25 @@ function App() {
         AOS.init()
         AOS.refresh()
     },[])
-  return (
-    <>
-      <p className={"text-red-800 text-9xl"} data-aos={"fade-up"}>test</p>
-    </>
+
+    const root:any = useRef(null)
+    const categoryDiv:any = useRef(null)
+
+    function bodyScroll() {
+        if (root.scrollTop() > 200){
+            console.log("scrolled down")
+            categoryDiv.display = "none"
+        }else {
+            console.log("scrolled top")
+            categoryDiv.display = "block"
+        }
+    }
+
+
+    return (
+    <div className={""} ref={root} onScroll={bodyScroll}>
+      <Header></Header>
+    </div>
   );
 }
 
