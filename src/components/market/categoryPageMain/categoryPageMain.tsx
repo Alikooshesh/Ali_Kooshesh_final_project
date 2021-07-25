@@ -2,6 +2,7 @@ import {Carousel, CarouselItem} from "react-bootstrap";
 import {FaFilter, FaSortAmountDownAlt} from 'react-icons/fa'
 import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
+import FilterBox from "../stableParts/filterBox/filterBox";
 
 function CategoryPageMain() {
     return(
@@ -32,9 +33,11 @@ function CategoryPageMain() {
 
                 <section className={"w-full flex mt-3"}>
                     <div className={"hidden md:block w-3/12 bg-gray-100 ml-2 rounded shadow-md"}>
-                        <div className={"w-full p-3 border-b-2 border-gray-300 font-anjoman"}>
-
+                        <div className={"w-full p-3 border-b-2 border-gray-300 font-anjoman flex items-center py-5"}>
+                            <FaFilter className={"ml-2"}/>
+                            <p>فیلتر های بیشتر</p>
                         </div>
+                        <div className={"p-3"}><FilterBox/></div>
                     </div>
                     <div className={"w-full md:w-9/12 bg-gray-100 rounded shadow-md"}>
                         <div className={"w-full p-3 border-b-2 border-gray-300 font-anjoman"}>
