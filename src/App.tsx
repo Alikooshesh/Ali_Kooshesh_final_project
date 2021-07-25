@@ -5,6 +5,7 @@ import './App.css';
 import HomePageMain from "./components/market/homePageMain/homePageMain";
 import Header from "./components/market/stableParts/header/header";
 import OffCanvas from "./components/market/stableParts/offCanvas/offCanvas";
+import CategoryPageMain from "./components/market/categoryPageMain/categoryPageMain";
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     return (
     <div className={""}>
         <Header setOffCanvShow={setOffCanShow}></Header>
-        <HomePageMain></HomePageMain>
+        <CategoryPageMain/>
         <OffCanvas show={offCanShow} setShow={setOffCanShow}/>
     </div>
   );
