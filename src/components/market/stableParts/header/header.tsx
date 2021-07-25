@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
 
-function Header () {
+function Header (props:{setOffCanvShow:Function}) {
 
     function categoryHoverOn() {
         console.log("mouseHoverOn")
@@ -21,7 +21,7 @@ function Header () {
                         <p className={"text-2xl md:text-3xl font-normal text-gray-800 ml-1"}>Market</p>
                     </div>
                     <div className={"self-center"}>
-                        <FaBars className={"h-full block md:hidden text-xl cursor-pointer"}></FaBars>
+                        <FaBars className={"h-full block md:hidden text-xl cursor-pointer"} onClick={()=> props.setOffCanvShow(true)}></FaBars>
                     </div>
                 </div>
                 <div className={"w-full h-11 flex justify-between md:mr-10"}>
