@@ -1,6 +1,7 @@
 import {Carousel, CarouselItem} from "react-bootstrap"
 import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
+import CategoryBox from "../stableParts/categoryBox/categoryBox";
 
 function HomePageMain() {
 
@@ -36,8 +37,20 @@ function HomePageMain() {
                     </div>
                 </div>
 
+                <div className={"pt-3"}><ProductBox boxName={"فروش ویژه"}/></div>
 
-                <div className={"pt-3"}><ProductBox/></div>
+                <div className={"w-full h-64 mt-3 flex justify-between"}>
+                    <div className={"w-6/12 h-full rounded-lg shadow-sm pl-1"}>
+                        <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                    </div>
+                    <div className={"w-6/12 h-full rounded-lg shadow-md pr-1"}>
+                        <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                    </div>
+                </div>
+
+                <div className={"pt-3"}><ProductBox boxName={"کالا های پیشنهادی"}/></div>
+
+                <div className={"pt-3"}><CategoryBox boxName={"بر اساس علایق شما"}/></div>
             </div>
 
         </div>
