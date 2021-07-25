@@ -3,8 +3,6 @@ import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
 
 function Header () {
 
-    const categoryDiv:any = useRef(null)
-
     function categoryHoverOn() {
         console.log("mouseHoverOn")
     }
@@ -14,7 +12,7 @@ function Header () {
     }
 
     return(
-        <header className={"w-full h-auto px-5 md:px-36 pt-5 pb-3 shadow-md"}>
+        <header className={"w-full h-auto px-5 lg:px-36 pt-5 pb-3 shadow-md bg-white sticky top-0 z-50"}>
             <div className={"w-full h-auto flex flex-col md:flex-row items-center bg-white"}>
                 <div dir={"ltr"} className={"w-full md:w-auto flex justify-between h-auto items-end mb-5 md:mb-4"}>
 
@@ -43,7 +41,7 @@ function Header () {
                 </div>
             </div>
 
-            <div ref={categoryDiv} className={"hidden md:flex font-anjoman font-thin text-gray-500"}>
+            <div className={"hidden md:flex font-anjoman font-thin text-gray-500"}>
                 <div className={"flex pb-1 border-l-2 pl-3 ml-3"}>
                     <button className={"hover:text-green-500"} onMouseEnter={categoryHoverOn} onMouseLeave={categoryHoverOff}>دسته بندی کالا ها</button>
                 </div>

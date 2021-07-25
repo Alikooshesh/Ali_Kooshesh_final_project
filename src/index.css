@@ -22,3 +22,7 @@ body , html , #root{
 .font-anjoman{
   font-family: 'Anjoman';
 }
+
+.pcw{
+  min-width: 16rem;
+}

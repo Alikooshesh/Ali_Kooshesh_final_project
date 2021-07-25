@@ -2,7 +2,8 @@ import React, {useEffect, useRef} from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './App.css';
-import Header from "./components/stableParts/header/header";
+import HomePageMain from "./components/market/homePageMain/homePageMain";
+import Header from "./components/market/stableParts/header/header";
 
 
 function App() {
@@ -12,22 +13,10 @@ function App() {
         AOS.refresh()
     },[])
 
-    const root:any = useRef(null)
-    const categoryDiv:any = useRef(null)
-
-    function bodyScroll() {
-        if (root.scrollTop() > 200){
-            console.log("scrolled down")
-            categoryDiv.display = "none"
-        }else {
-            console.log("scrolled top")
-            categoryDiv.display = "block"
-        }
-    }
-
     return (
-    <div className={""} ref={root} onScroll={bodyScroll}>
-      <Header></Header>
+    <div className={""}>
+        <Header></Header>
+        <HomePageMain></HomePageMain>
     </div>
   );
 }
