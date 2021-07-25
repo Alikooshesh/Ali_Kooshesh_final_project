@@ -37,7 +37,7 @@ function HomePageMain() {
                     </div>
                 </div>
 
-                <div className={"pt-3"}><ProductBox boxName={"فروش ویژه"}/></div>
+                <div className={"mt-3"}><ProductBox boxName={"فروش ویژه"}/></div>
 
                 <div className={"w-full h-64 mt-3 flex justify-between"}>
                     <div className={"w-6/12 h-full rounded-lg shadow-sm pl-1"}>
@@ -48,9 +48,11 @@ function HomePageMain() {
                     </div>
                 </div>
 
-                <div className={"pt-3"}><ProductBox boxName={"کالا های پیشنهادی"}/></div>
+                <div className={"mt-3"}><ProductBox boxName={"کالا های پیشنهادی"}/></div>
 
-                <div className={"pt-3"}><CategoryBox boxName={"بر اساس علایق شما"}/></div>
+                <div className={"hidden md:block mt-3"}><CategoryBox boxName={"بر اساس علایق شما"}/></div>
+
+                <div className={"mt-3"}><ProductBox boxName={"آخرین کالا های مشاهده شده"}/></div>
             </div>
 
         </div>
