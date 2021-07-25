@@ -3,8 +3,13 @@ import {FaFilter, FaSortAmountDownAlt} from 'react-icons/fa'
 import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
 import FilterBox from "../stableParts/filterBox/filterBox";
+import {useState} from "react";
+import MobileFilterOffcanvas from "../stableParts/filterBox/mobileFilterOffcanvas/mobileFilterOffcanvas";
 
 function CategoryPageMain() {
+
+    const [mobileFilterOffCanShow, setMobileFilterOffCanShow] = useState(false);
+
     return(
         <div className={"w-full px-3 pt-3"} data-aos="zoom-in-up">
             <div className={"w-full h-auto md:h-14 flex justify-center items-center rounded text-center font-anjoman text-sm bg-indigo-600 text-white py-2 px-1 md:py-0"}>
@@ -47,7 +52,7 @@ function CategoryPageMain() {
                                 <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>ارزانترین</button>
                                 <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>گرانترین</button>
                             </div>
-                            <div className={"flex items-center justify-center md:hidden mx-auto mt-2 p-2 pt-1 border-1 border-transparent focus:border-green-500 bg-gray-200 rounded"}>
+                            <div className={"flex items-center justify-center md:hidden mx-auto mt-2 p-2 pt-1 border-1 border-transparent focus:border-green-500 bg-gray-200 rounded"} onClick={() => setMobileFilterOffCanShow(true)}>
                                 <FaFilter className={"ml-2"}/>
                                 فیلتر های بیشتر
                             </div>
@@ -67,6 +72,7 @@ function CategoryPageMain() {
                     </div>
                 </section>
             </div>
+            <MobileFilterOffcanvas show={mobileFilterOffCanShow} setShow={setMobileFilterOffCanShow}/>
         </div>
     )
 }
