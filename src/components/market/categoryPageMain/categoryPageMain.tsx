@@ -1,6 +1,7 @@
 import {Carousel, CarouselItem} from "react-bootstrap";
-import {FaSortAmountDownAlt} from 'react-icons/fa'
+import {FaFilter, FaSortAmountDownAlt} from 'react-icons/fa'
 import ProductCard from "../stableParts/productsBox/productCard/productCard";
+import ProductBox from "../stableParts/productsBox/productBox";
 
 function CategoryPageMain() {
     return(
@@ -9,7 +10,7 @@ function CategoryPageMain() {
                 به دلیل تعطیلات ، در صورت عدم پاسخگویی پشتیبانی تلفنی ، از پشتیبانی آنلاین سایت استفاده کنید .
             </div>
 
-            <div className={"w-full h-full px-0 lg:px-28 pt-3"}>
+            <div className={"w-full h-full px-0 lg:px-28 mt-3"}>
                 <section className={"w-full 2xl:h-96 2xl:px-52"}>
                     <Carousel>
                         <CarouselItem>
@@ -25,16 +26,28 @@ function CategoryPageMain() {
                     </Carousel>
                 </section>
 
+                <section className={"w-full px-0 lg:px-28 mt-3"}>
+                    <ProductBox boxName={"کالاهای پیشنهادی"}/>
+                </section>
+
                 <section className={"w-full flex mt-3"}>
                     <div className={"hidden md:block w-3/12 bg-gray-100 ml-2 rounded shadow-md"}>
-t
+                        <div className={"w-full p-3 border-b-2 border-gray-300 font-anjoman"}>
+
+                        </div>
                     </div>
                     <div className={"w-full md:w-9/12 bg-gray-100 rounded shadow-md"}>
-                        <div className={"w-full p-3 flex justify-center md:justify-start items-center border-b-2 border-gray-300 font-anjoman"}>
-                            <FaSortAmountDownAlt className={"text-xl ml-2"}/>
-                            <button className={"p-2 pt-1 border-1 border-green-500 bg-gray-300 rounded ml-3"}>پر فروش ترین</button>
-                            <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>ارزانترین</button>
-                            <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>گرانترین</button>
+                        <div className={"w-full p-3 border-b-2 border-gray-300 font-anjoman"}>
+                            <div className={"w-full flex justify-center md:justify-start items-center "}>
+                                <FaSortAmountDownAlt className={"text-xl ml-2"}/>
+                                <button className={"p-2 pt-1 border-1 border-green-500 bg-gray-300 rounded ml-3"}>پر فروش ترین</button>
+                                <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>ارزانترین</button>
+                                <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>گرانترین</button>
+                            </div>
+                            <div className={"flex items-center justify-center md:hidden mx-auto mt-2 p-2 pt-1 border-1 border-transparent focus:border-green-500 bg-gray-200 rounded"}>
+                                <FaFilter className={"ml-2"}/>
+                                فیلتر های بیشتر
+                            </div>
                         </div>
                         <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 p-3 font-anjoman"}>
                             <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
