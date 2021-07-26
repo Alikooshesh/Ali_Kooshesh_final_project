@@ -6,6 +6,7 @@ import HomePageMain from "./components/market/homePageMain/homePageMain";
 import Header from "./components/market/stableParts/header/header";
 import OffCanvas from "./components/market/stableParts/offCanvas/offCanvas";
 import CategoryPageMain from "./components/market/categoryPageMain/categoryPageMain";
+import ProductMainPage from "./components/market/productMainPage/productMainPage";
 
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
 
     return (
     <div className={""}>
-        <Header setOffCanvShow={setOffCanShow}></Header>
-        <CategoryPageMain/>
+        <Header setOffCanvShow={setOffCanShow}/>
+        <ProductMainPage/>
         <OffCanvas show={offCanShow} setShow={setOffCanShow}/>
     </div>
   );

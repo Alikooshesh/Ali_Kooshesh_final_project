@@ -1,4 +1,4 @@
-import {FaDotCircle , FaKeyboard} from "react-icons/fa";
+import {FaDotCircle} from "react-icons/fa";
 import CategoryCard from "./categoryCard/categoryCard";
 
 function CategoryBox(props:{boxName:string}) {
