@@ -3,6 +3,7 @@ import Select from 'react-select';
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 import ProductBox from "../stableParts/productsBox/productBox";
 import ProductInfoBox from "./sections/productInfoBox/productInfoBox";
+import ProductCommentBox from "./sections/productCommentBox/productCommentBox";
 
 function ProductMainPage() {
     return(
@@ -60,14 +61,15 @@ function ProductMainPage() {
                 <section className={"mt-3"}><ProductBox boxName={"کالا های مشابه"}/></section>
 
                 <section className={"mt-3 md:flex"}>
-                    <div className={"w-full md:w-10/12 rounded-lg border-1 border-transparent bg-transparent px-5 py-3"}>
+                    <div className={"w-full lg:w-8/12 2xl:w-9/12 rounded-lg border-1 border-transparent bg-transparent px-5 py-3"}>
                         <div className={"flex sticky-top rounded-lg border-1 border-transparent font-anjoman text-gray-400 bg-gray-100"}>
                             <button className={"p-5 border-b-2 border-green-600 text-gray-500"}>مشخصات</button>
                             <button className={"p-5 border-b-2 border-transparent mr-3"}>دیدگاه کاربران</button>
                         </div>
                         <div className={"w-full font-anjoman pt-2 px-5 rounded-lg border-1 border-transparent bg-gray-100 mt-2"}><ProductInfoBox/></div>
+                        <div className={"w-full font-anjoman pt-2 px-5 rounded-lg border-1 border-transparent bg-gray-100 mt-2"}><ProductCommentBox/></div>
                     </div>
-                    <div className={"h-16 hidden md:flex md:w-2/12 rounded-lg border-2 border-gray-300 bg-gray-100 px-5 py-3 mr-2"}>
+                    <div className={"h-16 hidden lg:flex w-4/12 2xl:w-3/12 rounded-lg border-2 border-gray-300 bg-gray-100 px-5 py-3 mr-2"}>
                         <p className={"h-16"}>t</p>
                     </div>
                 </section>
