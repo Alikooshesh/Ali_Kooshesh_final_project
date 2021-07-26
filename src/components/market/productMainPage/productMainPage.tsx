@@ -1,6 +1,8 @@
 import ProductSumImgBox from "./sections/productSumImgBox/productSumImgBox";
 import Select from 'react-select';
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
+import ProductBox from "../stableParts/productsBox/productBox";
+import ProductInfoBox from "./sections/productInfoBox/productInfoBox";
 
 function ProductMainPage() {
     return(
@@ -31,12 +33,12 @@ function ProductMainPage() {
 
                         <div className={"w-full md:w-1/2 items-end bg-transparent pr-5 pt-5 pl-5"}>
                             <div className={"mt-10"}>
-                                <Select defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true} options={[{ value: 'chocolate', label: 'Chocolate' },
+                                <Select className={"font-anjoman"} defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true} options={[{ value: 'chocolate', label: 'Chocolate' },
                                     { value: 'strawberry', label: 'Strawberry' }]}/>
                             </div>
 
                             <div className={"mt-10"}>
-                                <Select defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true} options={[{ value: 'chocolate', label: 'Chocolate' },
+                                <Select className={"font-anjoman"} defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true} options={[{ value: 'chocolate', label: 'Chocolate' },
                                     { value: 'strawberry', label: 'Strawberry' }]}/>
                             </div>
 
@@ -52,6 +54,21 @@ function ProductMainPage() {
                             <button className={"w-full mt-20 h-16 border-1 border-transparent hover:border-green-700 rounded-lg bg-green-500 text-gray-100 text-2xl font-anjoman"}>افزودن به سبد خرید</button>
 
                         </div>
+                    </div>
+                </section>
+
+                <section className={"mt-3"}><ProductBox boxName={"کالا های مشابه"}/></section>
+
+                <section className={"mt-3 md:flex"}>
+                    <div className={"w-full md:w-10/12 rounded-lg border-1 border-transparent bg-transparent px-5 py-3"}>
+                        <div className={"flex sticky-top rounded-lg border-1 border-transparent font-anjoman text-gray-400 bg-gray-100"}>
+                            <button className={"p-5 border-b-2 border-green-600 text-gray-500"}>مشخصات</button>
+                            <button className={"p-5 border-b-2 border-transparent mr-3"}>دیدگاه کاربران</button>
+                        </div>
+                        <div className={"w-full font-anjoman pt-2 px-5 rounded-lg border-1 border-transparent bg-gray-100 mt-2"}><ProductInfoBox/></div>
+                    </div>
+                    <div className={"h-16 hidden md:flex md:w-2/12 rounded-lg border-2 border-gray-300 bg-gray-100 px-5 py-3 mr-2"}>
+                        <p className={"h-16"}>t</p>
                     </div>
                 </section>
             </div>
