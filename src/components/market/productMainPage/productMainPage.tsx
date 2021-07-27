@@ -58,11 +58,11 @@ function ProductMainPage() {
                     </div>
                 </section>
 
-                <section className={"mt-3"}><ProductBox boxName={"کالا های مشابه"}/></section>
+                <section className={"hidden md:block mt-3"}><ProductBox boxName={"کالا های مشابه"}/></section>
 
                 <section className={"w-full max-h-screen mt-3 md:flex relative overflow-x-hidden overflow-y-auto hide-scroll"}>
                     <div className={"w-full lg:w-8/12 2xl:w-9/12 rounded-lg border-1 border-transparent bg-transparent"}>
-                        <div className={"flex sticky top-0 z-10 rounded-lg border-2 border-gray-300 font-anjoman text-gray-400 bg-gray-100"}>
+                        <div className={"flex sticky top-0 z-10 shadow-md rounded-lg border-2 border-gray-300 font-anjoman text-gray-400 bg-gray-100"}>
                             <button className={"p-5 border-b-2 border-green-600 text-gray-500"}>مشخصات</button>
                             <a href={"#comments"}><button className={"p-5 border-b-2 border-transparent mr-3"}>دیدگاه کاربران</button></a>
                         </div>
