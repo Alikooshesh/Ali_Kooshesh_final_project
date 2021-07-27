@@ -7,6 +7,7 @@ import Header from "./components/market/stableParts/header/header";
 import OffCanvas from "./components/market/stableParts/offCanvas/offCanvas";
 import CategoryPageMain from "./components/market/categoryPageMain/categoryPageMain";
 import ProductMainPage from "./components/market/productMainPage/productMainPage";
+import Footer from "./components/market/stableParts/footer/footer";
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
     return (
     <div className={""}>
         <Header setOffCanvShow={setOffCanShow}/>
-        <ProductMainPage/>
+        <HomePageMain/>
+        <Footer/>
+
         <OffCanvas show={offCanShow} setShow={setOffCanShow}/>
     </div>
   );
