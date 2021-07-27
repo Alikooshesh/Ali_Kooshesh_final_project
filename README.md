@@ -8,6 +8,8 @@
 ## :pushpin: Market's Components 
 
 - `Header` => Stable header for every Market's page
+  
+- `Footer` => Stable footer for every Market's page 
 - `HomePageMain` => Main part of Home page
 - `CategoryMainPage` => Main part of Category page
 - `ProductMainPage` => Main part of Product page
