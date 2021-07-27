@@ -17,7 +17,6 @@ function ProductCommentBox() {
                         </tr>
 
 
-
                     </table>
                 </div>
             </div>
