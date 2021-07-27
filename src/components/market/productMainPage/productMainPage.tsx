@@ -60,17 +60,17 @@ function ProductMainPage() {
 
                 <section className={"hidden md:block mt-3"}><ProductBox boxName={"کالا های مشابه"}/></section>
 
-                <section className={"w-full max-h-screen mt-3 md:flex relative overflow-x-hidden overflow-y-auto hide-scroll"}>
-                    <div className={"w-full lg:w-8/12 2xl:w-9/12 rounded-lg border-1 border-transparent bg-transparent"}>
-                        <div className={"flex sticky top-0 z-10 shadow-md rounded-lg border-2 border-gray-300 font-anjoman text-gray-400 bg-gray-100"}>
-                            <button className={"p-5 border-b-2 border-green-600 text-gray-500"}>مشخصات</button>
-                            <a href={"#comments"}><button className={"p-5 border-b-2 border-transparent mr-3"}>دیدگاه کاربران</button></a>
+                <section className={"w-full max-h-screen mt-3 md:flex"}>
+                    <div className={"w-full lg:w-8/12 2xl:w-9/12 rounded-lg border-1 border-transparent bg-transparent relative overflow-x-hidden overflow-y-auto hide-scroll"}>
+                        <div className={"flex justify-center sm:justify-start sticky top-0 z-10 shadow-md rounded-lg border-2 border-gray-300 font-anjoman text-gray-400 bg-gray-100"}>
+                            <a href={"#info"}><button className={"py-3 px-7 my-2 mx-2 border-1 border-transparent rounded-lg bg-gray-200 text-gray-500 hover:text-green-500"}>مشخصات</button></a>
+                            <a href={"#comments"}><button className={"py-3 px-5 my-2 mx-2 border-1 border-transparent rounded-lg bg-gray-200 text-gray-500 hover:text-green-500"}>دیدگاه کاربران</button></a>
                         </div>
-                        <div className={"w-full font-anjoman pt-2 px-5 rounded-lg border-1 border-transparent bg-gray-100 mt-2"}><ProductInfoBox/></div>
+                        <div id={"info"} className={"w-full font-anjoman pt-2 px-5 rounded-lg border-1 border-transparent bg-gray-100 mt-2"}><ProductInfoBox/></div>
                         <div id={"comments"} className={"w-full font-anjoman pt-2 px-5 rounded-lg border-1 border-transparent bg-gray-100 mt-2"}><ProductCommentBox/></div>
                     </div>
 
-                    <div className={"h-96 sticky top-0 z-10 hidden lg:block w-4/12 2xl:w-3/12 rounded-lg border-2 border-gray-300 bg-gray-100 px-5 py-3 mr-2"}>
+                    <div className={"h-96 hidden lg:block w-4/12 2xl:w-3/12 rounded-lg border-2 border-gray-300 bg-gray-100 px-5 py-3 mr-2"}>
                         <div className={"w-3/5 bg-gray-100 rounded-lg mx-auto"}>
                             <img className={"w-full h-full"} src={"https://www.gainward.com/main/product/vga/pro/p01092/p01092_pic2_18835f745071e06e1.png"} loading={"lazy"}/>
                         </div>
