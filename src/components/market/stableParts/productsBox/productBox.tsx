@@ -1,10 +1,14 @@
 import ProductCard from "./productCard/productCard";
 import {FaDotCircle} from 'react-icons/fa'
 
+import SwiperCore, { Navigation, Scrollbar, Autoplay, Pagination} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'
 
 function ProductBox(props:{boxName:string}) {
+
+    SwiperCore.use([Navigation, Scrollbar, Autoplay, Pagination])
+
     return(
         <div className={"p-5 bg-gray-100 rounded-lg shadow-md "}>
             <div className={"w-full flex justify-start items-center mb-3"}>
@@ -14,16 +18,23 @@ function ProductBox(props:{boxName:string}) {
             <div className={"w-auto flex justify-around px-3 rounded-md"}>
                 <Swiper
                     slidesPerView={5}
+                    autoplay={{
+                        delay:3500,
+                        pauseOnMouseEnter:true
+                    }}
+                    scrollbar
                     breakpoints={{
                         280:{
                             slidesPerView : 1,
                             spaceBetween : 2,
-                            centeredSlides : true
+                            centeredSlides : true,
+                            navigation : true
                         },
                         350:{
                             slidesPerView : 1,
                             spaceBetween : 2,
-                            centeredSlides : true
+                            centeredSlides : true,
+                            navigation : true
                         },
                         550:{
                             slidesPerView : 2,
@@ -53,15 +64,16 @@ function ProductBox(props:{boxName:string}) {
                     loop={true}
                     centeredSlides={false}
                 >
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
-                    <SwiperSlide><div className={"w-64"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
+                    <SwiperSlide><div className={"w-64 mx-auto mb-5"}><ProductCard/></div></SwiperSlide>
                 </Swiper>
+
             </div>
         </div>
     )
