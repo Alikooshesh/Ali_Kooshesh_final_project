@@ -1,8 +1,9 @@
 import {Route} from "react-router-dom";
-import {Redirect} from "react-router/ts4.0";
+import {Redirect} from "react-router";
 import React from "react";
+import {Iroute} from "../../interfaces/routesInterface";
 
-function CustomRoute(props:{adminLoginReq : boolean , userLoginReq:boolean , path:string , exact:boolean , Component:any}) {
+function CustomRoute(props:Iroute) {
         const isUserLogedIn:boolean = true
         const isAdminLogedIn:boolean = true
 

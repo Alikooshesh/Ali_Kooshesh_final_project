@@ -3,17 +3,11 @@ import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './App.css';
-import HomePageMain from "./components/market/homePageMain/homePageMain";
-import Header from "./components/market/stableParts/header/header";
-import OffCanvas from "./components/market/stableParts/offCanvas/offCanvas";
-import CategoryPageMain from "./components/market/categoryPageMain/categoryPageMain";
-import ProductMainPage from "./components/market/productMainPage/productMainPage";
-import Footer from "./components/market/stableParts/footer/footer";
+import CustomRoute from "./components/routerMaker/customRoute";
+import {RtopLevelRoutes} from "./routes/topLevelRoutes";
 
 
 function App() {
-
-    const [offCanShow, setOffCanShow] = useState(false);
 
     useEffect(()=>{
         AOS.init()
@@ -21,13 +15,13 @@ function App() {
     },[])
 
     return (
-    <div className={""}>
-        <Header setOffCanvShow={setOffCanShow}/>
-        <HomePageMain/>
-        <Footer/>
-
-        <OffCanvas show={offCanShow} setShow={setOffCanShow}/>
-    </div>
+    <Router>
+        <Switch>
+            {RtopLevelRoutes.map((item , index) => {
+                return <CustomRoute key={`${item.path} + ${index}`} path={item.path} exact={item.exact} Component={item.Component} adminLoginReq={item.adminLoginReq} userLoginReq={item.userLoginReq}/>
+            })}
+        </Switch>
+    </Router>
   );
 }
 
