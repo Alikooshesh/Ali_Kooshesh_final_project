@@ -5,8 +5,10 @@
 - `SwiperJS` [NPM Link](https://www.npmjs.com/package/swiper)
 - `Create React App` [Link](https://create-react-app.dev/)
 - `Craco` [NPM Link](https://www.npmjs.com/package/@craco/craco)
+- `React-router-dom` [Link]()
 ## :pushpin: Market's Components 
-
+### - `CustomRoute` => route maker ( Split private and public routes )
+- `MarketIndex` => control routes and components inside market
 - `Header` => Stable header for every Market's page
   
 - `Footer` => Stable footer for every Market's page 
@@ -31,4 +33,9 @@
 - `ProductCommentBox` => Product's Comment Box
     - `AddComment` => New Comment Box
     
+## :unlock: Publick routes:
+###Market(" / ") :
+- `/` => open HomeMainPage
+- `/category` => open CategoryMainPage
+- `/product` => open ProductMainPage
     
