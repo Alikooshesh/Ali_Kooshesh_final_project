@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import './App.css';
