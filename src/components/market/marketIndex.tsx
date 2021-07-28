@@ -1,8 +1,10 @@
 import Header from "./stableParts/header/header";
-import {useState} from "react";
-import HomePageMain from "./homePageMain/homePageMain";
+import React, {useState} from "react";
 import Footer from "./stableParts/footer/footer";
 import OffCanvas from "./stableParts/offCanvas/offCanvas";
+import CustomRoute from "../routerMaker/customRoute";
+import {Switch} from "react-router-dom";
+import {RmarketRoutes} from "../../routes/marketRoutes";
 
 function MarketIndex() {
 
@@ -12,7 +14,11 @@ function MarketIndex() {
         <>
             <Header setOffCanvShow={setMobileSideBarShow}/>
             <main>
-                <HomePageMain/>
+                <Switch>
+                    {RmarketRoutes.map((item , index) => {
+                        return <CustomRoute key={`${item.path} + ${index}`} path={item.path} exact={item.exact} Component={item.Component} adminLoginReq={item.adminLoginReq} userLoginReq={item.userLoginReq}/>
+                    })}
+                </Switch>
             </main>
             <Footer/>
 
