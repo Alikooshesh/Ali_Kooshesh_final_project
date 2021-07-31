@@ -1,5 +1,6 @@
 import {FaDotCircle} from "react-icons/fa";
 import UserOrders from "./userOrders/userOrders";
+import UserAddress from "./userAddress/userAddress";
 
 function UserDashboard() {
     const a = true
@@ -31,7 +32,7 @@ function UserDashboard() {
                 </div>
             </div>
             <div className={"w-full md:w-9/12 flex flex-col mt-2 md:mt-0 md:mr-2 p-3 rounded-lg bg-gray-100"}>
-                <UserOrders/>
+                <UserAddress/>
             </div>
         </div>
     )
