@@ -1,6 +1,7 @@
 import {FaDotCircle} from "react-icons/fa";
 import UserOrders from "./userOrders/userOrders";
 import UserAddress from "./userAddress/userAddress";
+import UserAccount from "./userAccount/userAccount";
 
 function UserDashboard() {
     const a = true
@@ -27,12 +28,11 @@ function UserDashboard() {
                 <div className={"font-anjoman"}>
                     <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>سفارشات من</button>
                     <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>نشانی های من</button>
-                    <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>پشتیبانی</button>
                     <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>اطلاعات حساب</button>
                 </div>
             </div>
             <div className={"w-full md:w-9/12 flex flex-col mt-2 md:mt-0 md:mr-2 p-3 rounded-lg bg-gray-100"}>
-                <UserAddress/>
+                <UserAccount/>
             </div>
         </div>
     )
