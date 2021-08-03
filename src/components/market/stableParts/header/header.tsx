@@ -1,15 +1,10 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
+import DesktopCategory from "../categoryBoxDesktop/desktopCategory";
 
 function Header (props:{setOffCanvShow:Function}) {
 
-    function categoryHoverOn() {
-        console.log("mouseHoverOn")
-    }
-
-    function categoryHoverOff() {
-        console.log("mouseHoverOff")
-    }
+    const [categoryShow , setCategoryShow] = useState(false)
 
     return(
         <header className={"w-full h-auto px-5 lg:px-36 pt-5 pb-3 shadow-md bg-white sticky top-0 z-50"}>
@@ -41,10 +36,11 @@ function Header (props:{setOffCanvShow:Function}) {
                 </div>
             </div>
 
-            <div className={"hidden md:flex font-anjoman font-thin text-gray-500"}>
+            <div className={"hidden relative md:flex font-anjoman font-thin text-gray-500"} onMouseEnter={()=> setCategoryShow(true)} onMouseLeave={()=> setCategoryShow(false)}>
                 <div className={"flex pb-1 border-l-2 pl-3 ml-3"}>
-                    <button className={"hover:text-green-500"} onMouseEnter={categoryHoverOn} onMouseLeave={categoryHoverOff}>دسته بندی کالا ها</button>
+                    <button className={"hover:text-green-500"}>دسته بندی کالا ها</button>
                 </div>
+                <div className={`${!categoryShow && 'hidden'} absolute w-3/6 md:w-2/6 top-7 h-50`}><DesktopCategory/></div>
                 <button className={"hover:text-green-500 text-sm ml-8"}>لپ تاپ ها</button>
                 <button className={"hover:text-green-500 text-sm ml-8"}>کارت گرافیک ها</button>
                 <button className={"hover:text-green-500 text-sm ml-8"}>هدفون ها</button>
