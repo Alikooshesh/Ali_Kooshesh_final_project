@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
-import DesktopCategory from "../categoryBoxDesktop/desktopCategory";
+import DesktopCategory from "../desktopCategory/desktopCategory";
 
 function Header (props:{setOffCanvShow:Function}) {
 
