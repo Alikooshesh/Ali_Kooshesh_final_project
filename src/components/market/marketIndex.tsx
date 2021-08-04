@@ -15,7 +15,7 @@ function MarketIndex() {
     const [categoryList , setCategoryList] = useState<any>([])
 
     useEffect(()=>{
-        axios.get('https://602bf8bf30ba7200172227a8.mockapi.io/category')
+        axios.get('https://pcmarket-server-api.herokuapp.com/category')
             .then(data => {
                 setCategoryList(data.data)
                 console.log('axios category all')
