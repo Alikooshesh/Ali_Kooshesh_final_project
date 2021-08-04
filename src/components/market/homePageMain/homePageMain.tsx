@@ -2,8 +2,11 @@ import {Carousel, CarouselItem} from "react-bootstrap"
 
 import ProductBox from "../stableParts/productsBox/productBox";
 import CategoryBox from "../stableParts/categoryBox/categoryBox";
+import {useEffect} from "react";
+import axios from "axios";
 
 function HomePageMain() {
+
 
     return(
         <div className={"w-full px-3 pt-3"} data-aos="zoom-in-up">
@@ -37,7 +40,7 @@ function HomePageMain() {
                     </div>
                 </div>
 
-                <div className={"mt-3"}><ProductBox boxName={"فروش ویژه"}/></div>
+                <div className={"mt-3"}><ProductBox boxName={"فروش ویژه"} productList={['ca1pd1', 'ca2pd1']}/></div>
 
                 <div className={"w-full h-64 mt-3 flex justify-between"}>
                     <div className={"w-full md:w-6/12 h-full rounded-lg shadow-sm pl-1"}>
@@ -48,11 +51,11 @@ function HomePageMain() {
                     </div>
                 </div>
 
-                <div className={"mt-3"}><ProductBox boxName={"کالا های پیشنهادی"}/></div>
+                <div className={"mt-3"}><ProductBox boxName={"کالا های پیشنهادی"} productList={['ca1pd1', 'ca2pd1']}/></div>
 
                 <div className={"hidden md:block mt-3"}><CategoryBox boxName={"بر اساس علایق شما"}/></div>
 
-                <div className={"mt-3"}><ProductBox boxName={"آخرین کالا های مشاهده شده"}/></div>
+                <div className={"mt-3"}><ProductBox boxName={"آخرین کالا های مشاهده شده"} productList={['ca1pd1', 'ca2pd1']}/></div>
             </div>
 
         </div>

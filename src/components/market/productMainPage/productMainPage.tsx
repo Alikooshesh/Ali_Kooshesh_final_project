@@ -58,7 +58,7 @@ function ProductMainPage() {
                     </div>
                 </section>
 
-                <section className={"hidden md:block mt-3"}><ProductBox boxName={"کالا های مشابه"}/></section>
+                <section className={"hidden md:block mt-3"}><ProductBox boxName={"کالا های مشابه"} productList={['ca1pd1', 'ca2pd1']}/></section>
 
                 <section className={"w-full max-h-screen mt-3 md:flex"}>
                     <div className={"w-full lg:w-8/12 2xl:w-9/12 rounded-lg border-1 border-transparent bg-transparent relative overflow-x-hidden overflow-y-auto hide-scroll"}>

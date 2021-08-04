@@ -7,6 +7,7 @@ import {createContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom"
 import MobileFilterOffcanvas from "../stableParts/filterBox/mobileFilterOffcanvas/mobileFilterOffcanvas";
 import axios from "axios";
+import {Iproduct} from "../../../interfaces/apiInterfaces";
 
 
 
@@ -19,7 +20,7 @@ function CategoryPageMain() {
     const urlParams:{categoryID : string} = useParams()
 
     useEffect(()=> {
-        axios.get(`https://pcmarket-server-api.herokuapp.com/category/${urlParams.categoryID}`)
+        axios.get(`https://pcmarket-server-api.herokuapp.com/categoryWithProducts/${urlParams.categoryID}`)
             .then(categoryData => {
                 // console.log(categoryData.data)
                 setCategoryData(categoryData.data[0])
@@ -52,9 +53,12 @@ function CategoryPageMain() {
                         </Carousel>
                     </section>
 
+                    {categoryData.suggestedProducts && console.log(categoryData.suggestedProducts)}
+                    {categoryData.suggestedProducts &&
                     <section className={"w-full px-0 lg:px-28 mt-3"}>
-                        <ProductBox boxName={"کالاهای پیشنهادی"}/>
-                    </section>
+                        <ProductBox boxName={"کالاهای پیشنهادی"} productList={categoryData.suggestedProducts}/>
+                    </section>}
+
 
                     <section className={"w-full flex mt-3"}>
                         <div className={"hidden md:block w-3/12 bg-gray-100 ml-2 rounded shadow-md"}>
@@ -78,15 +82,13 @@ function CategoryPageMain() {
                                 </div>
                             </div>
                             <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 p-3 font-anjoman"}>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
-                                <div className={"w-64 mt-2 mx-auto"}><ProductCard/></div>
+                                {categoryData.product && categoryData.product.map((item:Iproduct) => {
+                                    return(
+                                        <div className={"relative w-64 mt-2 mx-auto"}>
+                                            <ProductCard id={item.productID} name={item.productName} img={item.img[0]} price={item.price} offPercent={item.offPercent} exist={item.exist}/>
+                                        </div>
+                                    )
+                                })}
 
                             </div>
                         </div>

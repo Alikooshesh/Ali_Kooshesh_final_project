@@ -7,7 +7,6 @@ function FilterBox() {
 
     const [categoryFilters , setCategoryFilters] = useState<any>({})
     function radioBtnChangeHandle(e:{target:any}) {
-        // console.log({propertyID , event})
         const name:any = e.target.name
         const value:string = e.target.value
         const newVal:any = categoryFilters
