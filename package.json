@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "CI=craco build",
+    "build": "craco build",
     "test": "craco test"
   },
   "eslintConfig": {
