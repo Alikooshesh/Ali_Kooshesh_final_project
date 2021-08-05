@@ -53,11 +53,11 @@ function CategoryPageMain() {
                         </Carousel>
                     </section>
 
-                    {categoryData.suggestedProducts && console.log(categoryData.suggestedProducts)}
-                    {categoryData.suggestedProducts &&
-                    <section className={"w-full px-0 lg:px-28 mt-3"}>
-                        <ProductBox boxName={"کالاهای پیشنهادی"} productList={categoryData.suggestedProducts}/>
-                    </section>}
+                    {/*{categoryData.suggestedProducts && console.log(categoryData.suggestedProducts)}*/}
+                    {/*{categoryData.suggestedProducts &&*/}
+                    {/*<section className={"w-full px-0 lg:px-28 mt-3"}>*/}
+                    {/*    <ProductBox boxName={"کالاهای پیشنهادی"} productList={['ca1pd1,ca1pd2']}/>*/}
+                    {/*</section>}*/}
 
 
                     <section className={"w-full flex mt-3"}>

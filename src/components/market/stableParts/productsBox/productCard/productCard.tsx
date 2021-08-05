@@ -13,8 +13,8 @@ function ProductCard(props:{id:string, name:string, img:string, price:number, of
                         <img className={"w-full h-full"} src={props.img} alt={`${props.name}`} loading={"lazy"}/>
                     </div>
                     <p className={"w-full max-h-16 text-right text-black pt-3 text-lg overflow-y-hidden"}>{props.name}</p>
-                    <p className={`w-full text-left text-red-500 font-anjoman text-sm pt-2`}>
-                        <del>{props.offPercent !== 0 ? `${props.price} تومان` :' '}</del>
+                    <p className={`w-full text-left text-red-500 font-anjoman text-sm pt-2 ${props.offPercent == 0 && 'text-opacity-0'}`}>
+                        <del>{props.offPercent !== 0 ? `${props.price} تومان` :'0'}</del>
                     </p>
                     <p className={"w-full text-left text-green-600 font-anjoman text-2xl pt-1"}>{`${props.price - (props.price * (props.offPercent / 100))} تومان`}</p>
                 </div>
