@@ -78,7 +78,7 @@ function ProductBox(props:{boxName:string , productList:string[]}) {
                         {products.map(item =>{
                             return(
                                 <SwiperSlide key={`${item.productID} ${props.boxName} ${Math.random()}`}>
-                                    <div className={"w-64 h-96 mx-auto mb-5"}>
+                                    <div className={"w-64 h-96 mx-auto mb-5 relative"}>
                                         <ProductCard id={item.productID} name={item.productTitleFA} img={item.img[0]} price={item.price} offPercent={item.offPercent} exist={item.exist}/>
                                     </div>
                                 </SwiperSlide>
