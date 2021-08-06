@@ -62,14 +62,14 @@ function ProductMainPage() {
 
                         <div className={"w-full md:w-1/2 items-end bg-transparent pr-5 pt-5 pl-5"}>
                             <div className={"mt-10"}>
-                                <Select className={"font-anjoman"} onChange={(guarantee) => guarantee && setGuaranteeSelected({id:guarantee.value , name:guarantee.label , selected:true})} defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true} options={productData?.guaranteeList.map(item => {
+                                <Select className={"font-anjoman"} onChange={(guarantee) => guarantee && guarantee.value != null && setGuaranteeSelected({id:guarantee.value , name:guarantee.label , selected:true})} defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true} options={productData?.guaranteeList.map(item => {
                                     return {value: item.guaranteeID ,label: item.guaranteeName }
                                 })}/>
                             </div>
 
                             <div className={"mt-10"}>
                                 <Select isDisabled={!guaranteeSelectedTimes} className={"font-anjoman"}
-                                        onChange={(guaranteeTime)=> guaranteeTime && setGuaranteeSelected({...guaranteeSelected , time:guaranteeTime.value})}
+                                        onChange={(guaranteeTime)=> guaranteeTime && guaranteeTime.value != null && setGuaranteeSelected({...guaranteeSelected , time:guaranteeTime.value})}
                                         defaultValue={{value: "null", label: 'انتخاب کنید'}} isSearchable={true}
                                         options={guaranteeSelectedTimes?.map((item ) => {
                                             return {value: `${item}`, label: `${item}`}
