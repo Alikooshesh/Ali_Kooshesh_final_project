@@ -11,7 +11,11 @@ export interface Iproduct{
     exist : number,
     sold : number,
     requiredProperty : {propertyID : string, propertyOptionID : string}[],
-    optionalProperty : {propertyName : string, propertyInfo:string}[],
-    comment : {commentID : string, commenterUserID : string, commentLike : number, commentDisLike:number, comentText:string}[],
+    fullProperty : {propertyName : string, propertyInfo:string}[],
+    comment : IcommentList[],
 
+}
+
+export interface IcommentList {
+    commentID : string, commenter : string, commentDate : string, commentLike : number, commentDisLike:number, comentText:string
 }
