@@ -22,13 +22,12 @@ function CategoryPageMain() {
     useEffect(()=> {
         axios.get(`https://pcmarket-server-api.herokuapp.com/categoryWithProducts/${urlParams.categoryID}`)
             .then(categoryData => {
-                // console.log(categoryData.data)
                 setCategoryData(categoryData.data[0])
                 console.log(categoryData.data[0])
                 console.log(`axios categoryID ${urlParams.categoryID}`)
             })
             .catch(err => console.log(err))
-    },[])
+    },[urlParams])
 
     return(
         <CategoryDataContext.Provider value={categoryData}>
@@ -53,11 +52,11 @@ function CategoryPageMain() {
                         </Carousel>
                     </section>
 
-                    {/*{categoryData.suggestedProducts && console.log(categoryData.suggestedProducts)}*/}
-                    {/*{categoryData.suggestedProducts &&*/}
-                    {/*<section className={"w-full px-0 lg:px-28 mt-3"}>*/}
-                    {/*    <ProductBox boxName={"کالاهای پیشنهادی"} productList={['ca1pd1,ca1pd2']}/>*/}
-                    {/*</section>}*/}
+                    {categoryData.suggestedProducts && console.log(categoryData.suggestedProducts)}
+
+                    <section className={"w-full px-0 lg:px-28 mt-3"}>
+                        <ProductBox boxName={"کالا های پیشنهادی"} productList={['ca1pd1', 'ca2pd1']}/>
+                    </section>
 
 
                     <section className={"w-full flex mt-3"}>
