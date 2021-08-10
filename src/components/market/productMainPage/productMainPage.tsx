@@ -8,8 +8,12 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Iproduct} from "../../../interfaces/apiInterfaces";
+import {useDispatch} from "react-redux";
+import {addSeenItem} from "../../../redux/reducers/productSeenReducer/productSeenReducer";
 
 function ProductMainPage() {
+
+    const dispatch = useDispatch()
 
     const [productData , setProductData] = useState<Iproduct | null>(null)
     const [guaranteeSelected , setGuaranteeSelected] = useState<{name?: string , id?: string , time?: string , selected : boolean}>({selected:false})
@@ -17,6 +21,7 @@ function ProductMainPage() {
 
     const urlParam:{productID : string} = useParams()
     useEffect(()=> {
+        dispatch(addSeenItem({productID : urlParam.productID}))
         axios.get(`https://pcmarket-server-api.herokuapp.com/product/${urlParam.productID}`)
             .then(productData => {
                 setProductData(productData.data)

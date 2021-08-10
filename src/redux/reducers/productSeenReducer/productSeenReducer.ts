@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const init = {
-    productList : ['7523']
+const init:{productList : string[]} = {
+    productList : []
 }
 
 const productSeenReducer = createSlice({
