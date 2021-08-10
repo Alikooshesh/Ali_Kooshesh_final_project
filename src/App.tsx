@@ -6,7 +6,6 @@ import './App.css';
 import CustomRoute from "./components/routerMaker/customRoute";
 import {RtopLevelRoutes} from "./routes/topLevelRoutes";
 
-
 function App() {
 
     useEffect(()=>{
@@ -15,13 +14,13 @@ function App() {
     },[])
 
     return (
-    <Router>
-        <Switch>
-            {RtopLevelRoutes.map((item , index) => {
-                return <CustomRoute key={`${item.path} + ${index}`} path={item.path} exact={item.exact} Component={item.Component} adminLoginReq={item.adminLoginReq} userLoginReq={item.userLoginReq}/>
-            })}
-        </Switch>
-    </Router>
+        <Router>
+            <Switch>
+                {RtopLevelRoutes.map((item , index) => {
+                    return <CustomRoute key={`${item.path} + ${index}`} path={item.path} exact={item.exact} Component={item.Component} adminLoginReq={item.adminLoginReq} userLoginReq={item.userLoginReq}/>
+                })}
+            </Switch>
+        </Router>
   );
 }
 
