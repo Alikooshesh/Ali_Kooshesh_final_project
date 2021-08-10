@@ -3,12 +3,14 @@ import React, {createContext, useEffect, useState} from "react";
 import Footer from "./stableParts/footer/footer";
 import OffCanvas from "./stableParts/offCanvas/offCanvas";
 import CustomRoute from "../routerMaker/customRoute";
-import {Switch} from "react-router-dom";
+import {Switch, useHistory, useLocation} from "react-router-dom";
 import {RmarketRoutes} from "../../routes/marketRoutes";
 import axios from "axios";
 
 export const CategoryListContext = createContext<any>([])
 function MarketIndex() {
+
+    const history = useLocation()
 
     const [mobileSideBarShow, setMobileSideBarShow] = useState(false);
 
@@ -22,6 +24,10 @@ function MarketIndex() {
             })
             .catch(err => console.log(err))
     },[])
+
+    useEffect(()=> {
+        window.scrollTo(0,0)
+    },[history])
 
     return(
         <>
