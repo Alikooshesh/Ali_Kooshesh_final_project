@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from 'react-router-dom'
 import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
 import DesktopCategory from "../desktopCategory/desktopCategory";
 import CartOnHeader from "../cart/cartOnHeader/cartOnHeader";
@@ -33,10 +34,12 @@ function Header (props:{setOffCanvShow:Function}) {
                                 <FaUser className={"text-xl"}/>
                             </div>
                         </div>
-                        <div className={"relative"}>
-                            <div className={`${false && 'hidden'} absolute top-0 right-0 bg-red-400 px-1 rounded-full text-gray-100`}>5</div>
-                            <FaShoppingCart className={"text-4xl h-full text-green-500 cursor-pointer"} onMouseEnter={()=> setHeaderCartShow(true)}/>
-                        </div>
+                        <Link to={'/cart'}>
+                            <div className={"relative"}>
+                                <div className={`${false && 'hidden'} absolute top-0 right-0 bg-red-400 px-1 rounded-full text-gray-100`}>5</div>
+                                <FaShoppingCart className={"text-4xl h-full text-green-500 cursor-pointer"} onMouseEnter={()=> setHeaderCartShow(true)}/>
+                            </div>
+                        </Link>
                         <div className={`${!headerCartShow && 'hidden'} absolute w-full left-0 top-11`}><CartOnHeader/></div>
                     </div>
                 </div>

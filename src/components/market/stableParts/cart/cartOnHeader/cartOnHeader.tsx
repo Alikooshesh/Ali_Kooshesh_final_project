@@ -52,7 +52,9 @@ function CartOnHeader() {
                     <p className={"text-gray-700"}>352000000 تومان</p>
                 </p>
                 <button className={"w-full ring-red-300 ring-2 hover:bg-red-300 rounded py-2 text-sm text-gray-700 mt-2"}>خالی کردن سبد خرید</button>
-                <button className={"w-full ring-green-600 ring-2 bg-green-500 hover:bg-green-600 rounded py-2 text-gray-200 mt-2"}>ثبت سفارش نهایی</button>
+                <Link to={"/cart"}>
+                    <button className={"w-full ring-green-600 ring-2 bg-green-500 hover:bg-green-600 rounded py-2 text-gray-200 mt-2"}>ثبت سفارش نهایی</button>
+                </Link>
             </div>
         </div>
     )

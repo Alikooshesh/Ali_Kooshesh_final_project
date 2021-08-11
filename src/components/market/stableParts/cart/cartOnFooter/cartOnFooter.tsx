@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 function CartOnFooter() {
     return(
         <div className={"w-full bg-white rounded-t-xl border-b-0 border-green-200 border-2 px-5 font-anjoman"}>
@@ -7,7 +9,11 @@ function CartOnFooter() {
                     <p className={"text-gray-700"}>352000000 تومان</p>
                 </p>
 
-                <button className={"w-6/12 ring-green-600 ring-2 bg-green-500 hover:bg-green-600 rounded text-gray-200 "}>ثبت سفارش نهایی</button>
+                <div className={"w-6/12"}>
+                    <Link to={"/cart"}>
+                        <button className={"w-full h-full ring-green-600 ring-2 bg-green-500 hover:bg-green-600 rounded text-gray-200"}>ثبت سفارش نهایی</button>
+                    </Link>
+                </div>
             </div>
         </div>
     )
