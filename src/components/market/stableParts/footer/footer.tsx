@@ -3,7 +3,7 @@ import {FaShippingFast} from "react-icons/all";
 
 function Footer() {
     return(
-        <footer className={"w-full mt-7 h-auto px-5 lg:px-36 pt-2 pb-7 font-anjoman bg-gray-100 "}>
+        <footer className={"hidden md:block w-full mt-7 h-auto px-5 lg:px-36 pt-2 pb-7 font-anjoman bg-gray-100 "}>
             <div dir={"ltr"} className={"w-full flex items-end justify-center md:justify-end cursor-pointer"}>
                 <p className={"text-5xl md:text-5xl font-bold text-green-500"}>PC</p>
                 <p className={"text-2xl md:text-3xl font-normal text-gray-800 ml-1"}>Market</p>

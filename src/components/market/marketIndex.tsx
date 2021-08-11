@@ -6,6 +6,7 @@ import CustomRoute from "../routerMaker/customRoute";
 import {Switch, useHistory, useLocation} from "react-router-dom";
 import {RmarketRoutes} from "../../routes/marketRoutes";
 import axios from "axios";
+import CartOnFooter from "./stableParts/cart/cartOnFooter/cartOnFooter";
 
 export const CategoryListContext = createContext<any>([])
 function MarketIndex() {
@@ -33,12 +34,16 @@ function MarketIndex() {
         <>
             <CategoryListContext.Provider value={categoryList}>
                 <Header setOffCanvShow={setMobileSideBarShow}/>
-                <main>
+                <main className={"relative"}>
                     <Switch>
                         {RmarketRoutes.map((item , index) => {
                             return <CustomRoute key={`${item.path} + ${index}`} path={item.path} exact={item.exact} Component={item.Component} adminLoginReq={item.adminLoginReq} userLoginReq={item.userLoginReq}/>
                         })}
                     </Switch>
+
+                    <div className={"md:hidden sticky w-full bottom-0 bg-transparent px-0 pb-0 mt-9"}>
+                        <CartOnFooter/>
+                    </div>
                 </main>
                 <Footer/>
 
