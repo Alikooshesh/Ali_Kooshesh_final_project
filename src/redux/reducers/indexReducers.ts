@@ -9,5 +9,5 @@ const combinedReducers = combineReducers({
     cart : cartReducer
 })
 
-const persistedReducers = persistReducer({key:'rootPersistor',storage,whitelist:['productSeen']},combinedReducers)
+const persistedReducers = persistReducer({key:'rootPersistor',storage,whitelist:['productSeen' , 'cart']},combinedReducers)
 export default persistedReducers
