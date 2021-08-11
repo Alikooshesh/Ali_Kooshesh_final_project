@@ -69,7 +69,7 @@ function MarketIndex() {
                         })}
                     </Switch>
 
-                    <div className={"md:hidden sticky w-full bottom-0 bg-transparent px-0 pb-0 mt-9"}>
+                    <div className={`${cartItemsRedux.length < 1 && 'hidden'} md:hidden sticky w-full bottom-0 bg-transparent px-0 pb-0 mt-9`}>
                         <CartOnFooter/>
                     </div>
                 </main>

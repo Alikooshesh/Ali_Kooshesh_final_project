@@ -12,7 +12,7 @@ function CartOnHeader() {
     useEffect(()=>{
         let fullPrice = 0
         for (let i = 0; i < cartItemsRedux.length; i++) {
-            const newPrice = (cartItemsRedux[i].price - (cartItemsRedux[i].price * cartItemsRedux[i].offPercent)) * cartItemsRedux[i].number
+            const newPrice = (cartItemsRedux[i].price - (cartItemsRedux[i].price * cartItemsRedux[i].offPercent / 100)) * cartItemsRedux[i].number
             fullPrice = fullPrice + newPrice
         }
         setFinalPrice(fullPrice)

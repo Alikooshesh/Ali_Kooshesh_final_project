@@ -3,8 +3,12 @@ import {Link} from 'react-router-dom'
 import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
 import DesktopCategory from "../desktopCategory/desktopCategory";
 import CartOnHeader from "../cart/cartOnHeader/cartOnHeader";
+import {IcartItem} from "../../../../interfaces/redux";
+import {useSelector} from "react-redux";
 
 function Header (props:{setOffCanvShow:Function}) {
+
+    const cartItemsRedux: IcartItem[] = useSelector((state: any) => state.cart.cartList)
 
     const [categoryShow , setCategoryShow] = useState(false)
     const [headerCartShow , setHeaderCartShow] = useState(false)
@@ -36,8 +40,8 @@ function Header (props:{setOffCanvShow:Function}) {
                         </div>
                         <Link to={'/cart'}>
                             <div className={"relative"}>
-                                <div className={`${false && 'hidden'} absolute top-0 right-0 bg-red-400 px-1 rounded-full text-gray-100`}>5</div>
-                                <FaShoppingCart className={"text-4xl h-full text-green-500 cursor-pointer"} onMouseEnter={()=> setHeaderCartShow(true)}/>
+                                <div className={`${cartItemsRedux.length < 1 && 'hidden'} absolute top-0 right-0 bg-red-400 px-1 rounded-full text-gray-100`}>{cartItemsRedux.length}</div>
+                                <FaShoppingCart className={"text-4xl h-full text-green-500 cursor-pointer"} onMouseEnter={()=> cartItemsRedux.length >= 1 && setHeaderCartShow(true)}/>
                             </div>
                         </Link>
                         <div className={`${!headerCartShow && 'hidden'} absolute w-full left-0 top-11`}><CartOnHeader/></div>
