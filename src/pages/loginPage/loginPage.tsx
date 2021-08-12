@@ -1,8 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Redirect} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {login} from "../../redux/reducers/userAuthReducer/userAuthReducer";
+import {useHistory} from "react-router-dom";
 
 function LoginPage() {
+
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const userAuthRedux = useSelector((state:any) => state.userAuth)
 
     const [box,setBox] = useState<number>(1)
     const [phoneNumber , setPhoneNumer] = useState<number|string>("")
@@ -49,8 +56,10 @@ function LoginPage() {
                 .then(res => {
                     console.log(res.data)
                     if (res.data.fullName){
-                        return <Redirect to={'/dashboard'}/>
+                        dispatch(login({userId : res.data.userId , fullName : res.data.fullName , phoneNumber : res.data.phone , tokenId : res.data.tokenId}))
+                        history.push('/dashboard')
                     }else {
+                        dispatch(login({userId : res.data.userId , fullName : "" , phoneNumber : res.data.phone , tokenId : res.data.tokenId}))
                         setBox(3)
                         setLoading(false)
                     }
@@ -62,6 +71,23 @@ function LoginPage() {
         }
     }
 
+    function addFullName() {
+        if(fullName.length>3){
+            axios.post('https://pcmarket-server-api.herokuapp.com/user/fullName',{tokenId : userAuthRedux.tokenId , newFullName : fullName})
+                .then(res =>{
+                    dispatch(login({userId : res.data.userId , fullName : res.data.fullName , phoneNumber : res.data.phone , tokenId : res.data.tokenId}))
+                    history.push('/dashboard')
+                })
+                .catch(err => {
+                    console.log(err)
+                    setLoading(false)
+                })
+        }
+    }
+
+    useEffect(()=>{
+        userAuthRedux.isLogin && history.push('/dashboard')
+    },[])
 
     return(
         <div className={"w-full h-full flex justify-center items-center bg-gray-300 p-3"}>
@@ -93,7 +119,7 @@ function LoginPage() {
                 <input id={"fullName"} placeholder={"مهران مدیری"} className={"w-full h-8 p-2 text-center mt-1"}
                        value={fullName} onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setFullName(e.target.value)}/>
 
-                <button className={"w-2/3 h-9 bg-green-500 hover:bg-green-600 border-green-500 border-1 rounded-lg mt-2 text-gray-100"} onClick={verifyCodeBtnClick}>ورود به داشبورد</button>
+                <button className={"w-2/3 h-9 bg-green-500 hover:bg-green-600 border-green-500 border-1 rounded-lg mt-2 text-gray-100"} onClick={addFullName}>ورود به داشبورد</button>
             </div>
         </div>
     )
