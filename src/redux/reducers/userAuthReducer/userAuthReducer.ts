@@ -19,7 +19,7 @@ const userAuthReducer = createSlice({
             state.phoneNumber = action.payload.phoneNumber
             state.tokenId = action.payload.tokenId
         },
-        logout : (state,action)=>{
+        logout : (state)=>{
             state.isLogin = false
             state.userId = ''
             state.fullName = ''

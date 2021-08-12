@@ -3,8 +3,12 @@ import {Switch} from "react-router-dom";
 import React from "react";
 import {RuserDashboardRoutes} from "../../../routes/userDashboardRoutes";
 import { Link } from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import {logout} from "../../../redux/reducers/userAuthReducer/userAuthReducer";
 
 function UserDashboard() {
+
+    const dispatch = useDispatch()
 
     return(
         <div className={"w-full px-5 lg:px-36 pt-2 mt-3 flex flex-col md:flex-row"}>
@@ -28,7 +32,7 @@ function UserDashboard() {
                     <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>اطلاعات پرداخت های من</button>
                 </div>
 
-                <div className={"font-anjoman"}>
+                <div className={"font-anjoman border-b-2"}>
                     <Link to={"/dashboard/orders"}>
                         <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>سفارشات من</button>
                     </Link>
@@ -39,6 +43,12 @@ function UserDashboard() {
 
                     <Link to={"/dashboard/account/"}>
                         <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>اطلاعات حساب</button>
+                    </Link>
+                </div>
+
+                <div className={"font-anjoman text-center pt-1"}>
+                    <Link to={"/"}>
+                        <button className={"w-2/3 p-2 text-center text-lg text-gray-200 bg-red-500 hover:bg-red-700 rounded-lg"} onClick={()=> dispatch(logout())}>خروج</button>
                     </Link>
                 </div>
             </div>
