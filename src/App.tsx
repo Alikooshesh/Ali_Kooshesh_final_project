@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Switch} from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
