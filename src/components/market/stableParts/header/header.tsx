@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 
 function Header (props:{setOffCanvShow:Function}) {
 
+    const userAuthRedux = useSelector((state:any) => state.userAuth)
     const cartItemsRedux: IcartItem[] = useSelector((state: any) => state.cart.cartList)
 
     const [categoryShow , setCategoryShow] = useState(false)
@@ -33,10 +34,12 @@ function Header (props:{setOffCanvShow:Function}) {
                     </div>
                     <div className={"relative flex"} onMouseLeave={()=> setHeaderCartShow(false)}>
                         <div className={"pl-3 border-l-2 ml-3 mb-1"}>
-                            <div className={"h-full flex justify-center items-center border hover:border-gray-500 cursor-pointer rounded text-gray-400 hover:text-gray-600 p-2 text-center"}>
-                                <p className={"h-full font-anjoman pl-3 hidden lg:block"}>ورود به حساب کاربری</p>
-                                <FaUser className={"text-xl"}/>
-                            </div>
+                            <Link to={'/login'}>
+                                <div className={"h-full flex justify-center items-center border hover:border-gray-500 cursor-pointer rounded text-gray-400 hover:text-gray-600 p-2 text-center"}>
+                                    <p className={"h-full font-anjoman pl-3 hidden lg:block"}>{userAuthRedux.isLogin ? 'حساب کاربری شما' : 'ورود به حساب کاربری'}</p>
+                                    <FaUser className={"text-xl"}/>
+                                </div>
+                            </Link>
                         </div>
                         <Link to={'/cart'}>
                             <div className={"relative"}>

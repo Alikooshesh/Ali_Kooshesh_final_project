@@ -1,7 +1,27 @@
 import {FaDotCircle} from "react-icons/fa";
 import Select from "react-select";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../../../redux/reducers/userAuthReducer/userAuthReducer";
 
 function UserAddress() {
+
+    const userAuthRedux = useSelector((state:any) => state.userAuth)
+    const dispatch = useDispatch()
+
+    const [addressList , setAddressList] = useState<string[]>([])
+
+    useEffect(()=>{
+        axios.get(`https://pcmarket-server-api.herokuapp.com/user/address/${userAuthRedux.tokenId}`)
+            .then(res => {
+                setAddressList(res.data)
+            })
+            .catch(err => {
+                dispatch(logout())
+                console.log(err.data)
+            })
+    },[])
     return(
         <>
             <div className={"w-full h-8 flex justify-start items-center mb-3"}>
@@ -39,33 +59,15 @@ function UserAddress() {
                 </div>
 
                 <div className={"border-t-2"}>
-                    <div className={"w-full p-2 border-b-2 text-gray-700"}>
-                        <p className={"text-gray-400"}>منزل</p>
-                        <p>فارس - استهبان</p>
-                        <p> خیابان فلان - کوچه سوم - پلاک 7</p>
-                        <p>کد پستی : 7153687156</p>
-                    </div>
-
-                    <div className={"w-full p-2 border-b-2 text-gray-700"}>
-                        <p className={"text-gray-400"}>منزل</p>
-                        <p>فارس - استهبان</p>
-                        <p> خیابان فلان - کوچه سوم - پلاک 7</p>
-                        <p>کد پستی : 7153687156</p>
-                    </div>
-
-                    <div className={"w-full p-2 border-b-2 text-gray-700"}>
-                        <p className={"text-gray-400"}>منزل</p>
-                        <p>فارس - استهبان</p>
-                        <p> خیابان فلان - کوچه سوم - پلاک 7</p>
-                        <p>کد پستی : 7153687156</p>
-                    </div>
-
-                    <div className={"w-full p-2 border-b-2 text-gray-700"}>
-                        <p className={"text-gray-400"}>منزل</p>
-                        <p>فارس - استهبان</p>
-                        <p> خیابان فلان - کوچه سوم - پلاک 7</p>
-                        <p>کد پستی : 7153687156</p>
-                    </div>
+                    {addressList.length == 0 && <p className={"text-2xl text-red-500 text-center mt-2"}>شما آدرس ثبت شده ای ندارید</p>}
+                    {addressList.map((item , index) => {
+                        return(
+                            <div className={"w-full p-2 border-b-2 text-gray-700"}>
+                                <p className={"text-gray-400"}>{`آدرس ${index+1}`}</p>
+                                <p>{item}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </>

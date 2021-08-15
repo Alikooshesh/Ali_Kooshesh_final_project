@@ -7,7 +7,7 @@ function DesktopCategory(){
     const categoryListContext:any[] = useContext(CategoryListContext)
 
     return(
-        <div className={"w-full bg-gray-100 p-3 flex flex-col space-y-3 rounded-lg rounded-t-none"}>
+        <div className={"w-full bg-gray-100 p-3 flex flex-col space-y-3 rounded-lg rounded-t-none border-gray-300 border-2 border-t-0"}>
             {categoryListContext && categoryListContext.map(item => {
                 return(
                     <Link to={`/category/${item.categoryID}`} key={`${item.categoryID}Desktop`}>

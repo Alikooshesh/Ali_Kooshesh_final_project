@@ -1,8 +1,30 @@
 import {FaDotCircle} from "react-icons/fa";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {logout} from "../../../../redux/reducers/userAuthReducer/userAuthReducer";
+import {IuserOrder} from "../../../../interfaces/userInterfaces";
 
 const a = true
 
 function UserOrders() {
+
+    const userAuthRedux = useSelector((state:any) => state.userAuth)
+    const dispatch = useDispatch()
+
+    const [orderList , setOrderList] = useState<IuserOrder[]>([])
+
+    useEffect(()=>{
+        axios.get(`https://pcmarket-server-api.herokuapp.com/user/orders/${userAuthRedux.tokenId}`)
+            .then(res => {
+                setOrderList(res.data)
+            })
+            .catch(err => {
+                dispatch(logout())
+                console.log(err.data)
+            })
+    },[])
+
     return(
         <>
             <div className={"w-full h-8 flex justify-start items-center mb-3"}>
@@ -22,89 +44,23 @@ function UserOrders() {
                     </thead>
 
                     <tbody>
-                    <tr className={`${!a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1583</td>
-                        <td className={"py-2"}>در حال آماده سازی</td>
-                        <td className={"hidden md:table-cell  py-2"}>با تیپاکس ارسال شود</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
 
-                    <tr className={`${a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1520</td>
-                        <td className={"py-2"}>ارسال شده</td>
-                        <td className={"hidden md:table-cell  py-2"}>کد رهگیری : 52369357523693</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${!a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1583</td>
-                        <td className={"py-2"}>در حال آماده سازی</td>
-                        <td className={"hidden md:table-cell  py-2"}>با تیپاکس ارسال شود</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1520</td>
-                        <td className={"py-2"}>ارسال شده</td>
-                        <td className={"hidden md:table-cell  py-2"}>کد رهگیری : 52369357523693</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${!a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1583</td>
-                        <td className={"py-2"}>در حال آماده سازی</td>
-                        <td className={"hidden md:table-cell  py-2"}>با تیپاکس ارسال شود</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1520</td>
-                        <td className={"py-2"}>ارسال شده</td>
-                        <td className={"hidden md:table-cell  py-2"}>کد رهگیری : 52369357523693</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${!a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1583</td>
-                        <td className={"py-2"}>در حال آماده سازی</td>
-                        <td className={"hidden md:table-cell  py-2"}>با تیپاکس ارسال شود</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1520</td>
-                        <td className={"py-2"}>ارسال شده</td>
-                        <td className={"hidden md:table-cell  py-2"}>کد رهگیری : 52369357523693</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
-
-                    <tr className={`${!a ? 'bg-gray-200' : 'bg-transparent'}`}>
-                        <td className={"py-2"}>1583</td>
-                        <td className={"py-2"}>در حال آماده سازی</td>
-                        <td className={"hidden md:table-cell  py-2"}>با تیپاکس ارسال شود</td>
-                        <td className={"hidden md:table-cell py-2"}>
-                            <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
-                        </td>
-                    </tr>
+                    {orderList.map(item => {
+                        return(
+                            <tr className={`${!a ? 'bg-gray-200' : 'bg-transparent'}`}>
+                                <td className={"py-2"}>{item.orderId}</td>
+                                <td className={"py-2"}>{item.status}</td>
+                                <td className={"hidden md:table-cell  py-2"}>{item.description}</td>
+                                <td className={"hidden md:table-cell py-2"}>
+                                    <button className={"p-2 bg-transparent rounded-lg border-transparent bg-green-600 text-white"}>درخواست پشتیبانی</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
 
                     </tbody>
                 </table>
+                {orderList.length == 0 && <p className={"w-full text-2xl text-red-500 text-center mt-2"}>شما سفارش ثبت شده ای ندارید</p>}
             </div>
         </>
     )
