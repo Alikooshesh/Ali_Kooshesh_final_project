@@ -55,7 +55,8 @@ function HomePageMain() {
 
                 <div className={"hidden md:block mt-3"}><CategoryBox boxName={"بر اساس علایق شما"}/></div>
 
-                <div className={"mt-3"}><ProductBox boxName={"آخرین کالا های مشاهده شده"} productList={[...lastSeenProducts]}/></div>
+                {lastSeenProducts.length>1 && <div className={"mt-3"}><ProductBox boxName={"آخرین کالا های مشاهده شده"} productList={[...lastSeenProducts]}/></div>}
+
 
             </div>
 

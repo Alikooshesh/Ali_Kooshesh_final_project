@@ -9,10 +9,14 @@ const productSeenReducer = createSlice({
     initialState : init,
     reducers :{
         addSeenItem : (state,action) => {
-            while (state.productList.length > 5){
-                state.productList.shift()
+            const finder = state.productList.findIndex(item => item == action.payload.productID)
+
+            if (finder == -1){
+                while (state.productList.length > 5){
+                    state.productList.shift()
+                }
+                state.productList.push(action.payload.productID)
             }
-            state.productList.push(action.payload.productID)
         }
     }
 })
