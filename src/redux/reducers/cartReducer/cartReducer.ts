@@ -24,7 +24,7 @@ const cartReducer = createSlice({
             state.cartList.push(newItem)
         },
         remove: (state, action) => {
-            state.cartList = state.cartList.filter(item => item.productId == action.payload.productId)
+            state.cartList = state.cartList.filter(item => item.productId != action.payload.productId)
         },
         editNumber: (state, action) => {
             const productFinder: number = state.cartList.findIndex(item => item.productId == action.payload.productId)

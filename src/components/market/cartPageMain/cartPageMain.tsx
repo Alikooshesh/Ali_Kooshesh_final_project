@@ -1,10 +1,10 @@
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight, FaTrashAlt} from "react-icons/fa";
 import {useEffect, useState} from "react";
 import {Iproduct} from "../../../interfaces/apiInterfaces";
 import axios from "axios";
 import {IcartItem} from "../../../interfaces/redux";
 import {useDispatch, useSelector} from "react-redux";
-import {editNumber} from "../../../redux/reducers/cartReducer/cartReducer";
+import {editNumber, remove} from "../../../redux/reducers/cartReducer/cartReducer";
 
 function CartPageMain() {
 
@@ -55,13 +55,15 @@ function CartPageMain() {
                                     <div className={`${item.description.length == 0 && 'hidden'} font-serif font-light text-sm text-gray-400 mt-3`}>
                                         <p>توضیحات :</p>
                                         <span>{item.description}</span>
+                                        <FaTrashAlt className={"hidden md:flex text-red-400 text-2xl cursor-pointer mt-8 hover:text-red-500"} onClick={()=> dispatch(remove({productId : item.productId}))}/>
                                     </div>
-                                    <div className={"flex flex-col justify-center md:flex-row md:justify-between items-center mt-5 "}>
+                                    <div className={"flex flex-col justify-center md:flex-row md:justify-between items-center"}>
                                         <div className={"flex items-center"}>
                                             <p className={"text-gray-500 text-sm font-anjoman ml-5"}>تعداد</p>
                                             <FaChevronRight className={"text-green-500 text-2xl cursor-pointer ml-3"} onClick={() => dispatch(editNumber({productId : item.productId , order:"-"}))}/>
                                             <input type={"number"} className={"w-16 h-16 text-xl font-bold pb-1 border-0 outline-none bg-transparent text-center text-green-700"} value={item.number}/>
                                             <FaChevronLeft className={"text-green-500 text-2xl cursor-pointer"} onClick={() => dispatch(editNumber({productId : item.productId , order:"+"}))}/>
+                                            <FaTrashAlt className={"md:hidden text-red-400 text-2xl cursor-pointer mr-5 hover:text-red-500"} onClick={()=> dispatch(remove({productId : item.productId}))}/>
                                         </div>
 
                                         <div>
@@ -86,7 +88,7 @@ function CartPageMain() {
                             </div>
                             <div className={"w-full flex"}>
                                 <p className={"w-full text-sm text-gray-500 text-right"}>تخفیف ویژه :</p>
-                                <p className={"w-6/12 text-gray-600 text-sm text-left"}>{offPrice} تومان</p>
+                                <p className={"w-6/12 text-red-400 text-sm text-left"}>{offPrice} تومان</p>
                             </div>
                             <div className={"w-full flex"}>
                                 <p className={"w-full text-sm text-gray-500 text-right"}>بسته بندی و ارسال :</p>
