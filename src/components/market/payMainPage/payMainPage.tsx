@@ -1,19 +1,28 @@
 import {FaChevronLeft, FaChevronRight, FaTrashAlt} from "react-icons/fa";
-import {useEffect, useState} from "react";
-import {Link} from 'react-router-dom'
+import React, {useEffect, useState} from "react";
+import {Iproduct} from "../../../interfaces/apiInterfaces";
+import axios from "axios";
 import {IcartItem} from "../../../interfaces/redux";
 import {useDispatch, useSelector} from "react-redux";
-import {editNumber, remove} from "../../../redux/reducers/cartReducer/cartReducer";
+import {editNumber, remove, removeAll} from "../../../redux/reducers/cartReducer/cartReducer";
+import {logout} from "../../../redux/reducers/userAuthReducer/userAuthReducer";
+import {useHistory , Link} from "react-router-dom";
 
-function CartPageMain() {
+function PayMainPage() {
 
-    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const userAuthRedux = useSelector((state:any) => state.userAuth)
     const cartItemsRedux: IcartItem[] = useSelector((state: any) => state.cart.cartList)
+    const dispatch = useDispatch()
 
     const [fullPrice , setFullPrice] = useState<number>(0)
     const [offPrice , setOffPrice] = useState<number>(0)
     const [postPrice , setPostPrice] = useState<number>(15000)
     const [finalPrice , setFinalPrice] = useState<number>(0)
+
+    const [addressList , setAddressList] = useState<string[]>([])
+    const [selectedAddress , setSelectedAddress] = useState<string|boolean>(false)
 
     useEffect(()=>{
         let finalPriceTemp = 0
@@ -34,6 +43,39 @@ function CartPageMain() {
         finalPriceTemp >= 1000000 && setPostPrice(0)
     },[cartItemsRedux])
 
+
+    useEffect(()=>{
+        axios.get(`https://pcmarket-server-api.herokuapp.com/user/address/${userAuthRedux.tokenId}`)
+            .then(res => {
+                setAddressList(res.data)
+            })
+            .catch(err => {
+                dispatch(logout())
+                console.log(err.data)
+            })
+    },[])
+
+    function sendOrder() {
+        if (selectedAddress && finalPrice > 0){
+            axios.post('https://pcmarket-server-api.herokuapp.com/addOrder',{
+                tokenId : userAuthRedux.tokenId,
+                products : cartItemsRedux,
+                address : selectedAddress,
+                description : ""
+            })
+                .then(res => {
+                    alert("order added")
+                    dispatch(removeAll())
+                    history.push('/dashboard')
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    alert("ثبت سفارش شما موفقیت آمیز نبود")
+                    console.log(err.data)
+                })
+        }
+    }
+
     return(
         <div className={"w-full px-3 pt-3"} data-aos="zoom-in-up">
             <div className={"w-full h-auto md:h-14 flex justify-center items-center rounded text-center font-anjoman text-sm bg-indigo-600 text-white py-2 px-1 md:py-0"}>
@@ -42,39 +84,17 @@ function CartPageMain() {
 
             <div className={"w-full flex px-0 lg:px-64 pt-3 font-anjoman"}>
                 <div className={"w-full md:w-8/12 bg-gray-100 rounded-lg py-2 px-3"}>
-                    {cartItemsRedux.length == 0 && <p className={"text-2xl text-red-500 text-center mt-2"}>سبد خرید شما خالیست</p>}
-                    {cartItemsRedux.map(item => {
+                    {addressList.length == 0 &&
+                    <p className={"text-2xl text-red-500 text-center mt-2"}>شما آدرس ثبت شده ای ندارید</p>}
+                    <Link to={"/dashboard/address"}>
+                        <button className={"bg-green-500 hover:bg-green-600 rounded py-2 px-4 text-gray-200 mt-2"}>ثبت نشانی جدید</button>
+                    </Link>
+                    {addressList.length > 0 && <p className={"text-2xl text-gray-700 text-center mt-2"}>نشانی مد نظرتان را انتخاب کنید</p>}
+                    {addressList.map((item , index) => {
                         return(
-                            <div className={"w-full flex justify-between border-b-2 py-2"}>
-                                <div className={"w-3/12 max-h-32 md:max-h-56"}>
-                                    <img className={"w-full h-full"} src={item.mainImg} alt={item.productName}/>
-                                </div>
-
-                                <div className={"w-8/12"}>
-                                    <p className={"font-anjoman text-lg text-gray-700"}>{item.productTitleFA}</p>
-                                    <p className={"font-serif font-light text-sm text-gray-400"}>{item.productName}</p>
-                                    <div className={`${item.description.length == 0 && 'hidden'} font-serif font-light text-sm text-gray-400 mt-3`}>
-                                        <p>توضیحات :</p>
-                                        <span>{item.description}</span>
-                                        <FaTrashAlt className={"hidden md:flex text-red-400 text-2xl cursor-pointer mt-8 hover:text-red-500"} onClick={()=> dispatch(remove({productId : item.productId}))}/>
-                                    </div>
-                                    <div className={"flex flex-col justify-center md:flex-row md:justify-between items-center"}>
-                                        <div className={"flex items-center"}>
-                                            <p className={"text-gray-500 text-sm font-anjoman ml-5"}>تعداد</p>
-                                            <FaChevronRight className={"text-green-500 text-2xl cursor-pointer ml-3"} onClick={() => dispatch(editNumber({productId : item.productId , order:"-"}))}/>
-                                            <input type={"number"} className={"w-16 h-16 text-xl font-bold pb-1 border-0 outline-none bg-transparent text-center text-green-700"} value={item.number}/>
-                                            <FaChevronLeft className={"text-green-500 text-2xl cursor-pointer"} onClick={() => dispatch(editNumber({productId : item.productId , order:"+"}))}/>
-                                            <FaTrashAlt className={"md:hidden text-red-400 text-2xl cursor-pointer mr-5 hover:text-red-500"} onClick={()=> dispatch(remove({productId : item.productId}))}/>
-                                        </div>
-
-                                        <div>
-                                            <p className={`w-full text-left text-red-500 font-anjoman text-sm ${item.offPercent == 0 && 'hidden text-opacity-0'}`}>
-                                                <del>{item.offPercent !== 0 ? `${item.price * item.number} تومان` :''}</del>
-                                            </p>
-                                            <p className={"w-full text-left font-anjoman text-3xl text-green-700"}>{`${(item.price - (item.price * (item.offPercent / 100))) * item.number} تومان`}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div key={`item-add-${index}`} className={"mb-1"} onChange={(e:{target : any})=> setSelectedAddress(e.target.value)}>
+                                <input id={'address'} type={"radio"} name={`${index}`} value={item}/>
+                                <label htmlFor={'address'} className={"mr-2 text-gray-500"}>{item}</label>
                             </div>
                         )
                     })}
@@ -102,9 +122,7 @@ function CartPageMain() {
                         </div>
 
                         <div className={"w-full text-center"}>
-                            <Link to={'/pay'}>
-                                <button className={"w-8/12 bg-green-500 hover:bg-green-600 rounded py-2 text-gray-200 mt-2"}>ثبت آدرس و پرداخت</button>
-                            </Link>
+                            <button className={"w-8/12 bg-green-500 hover:bg-green-600 rounded py-2 text-gray-200 mt-2"} onClick={sendOrder}>پرداخت و ثبت نهایی</button>
                         </div>
                     </div>
                     <p className={"text-red-400 text-sm mt-2 text-right"}>بسته بندی و ارسال سفارشات بیش از 10 میلیون تومان ، رایگان است</p>
@@ -115,4 +133,4 @@ function CartPageMain() {
     )
 }
 
-export default CartPageMain
+export default PayMainPage

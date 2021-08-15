@@ -1,11 +1,14 @@
 import {Link} from 'react-router-dom'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {IcartItem} from "../../../../../interfaces/redux";
 import {useEffect, useState} from "react";
+import {removeAll} from "../../../../../redux/reducers/cartReducer/cartReducer";
 
 function CartOnHeader() {
 
     const cartItemsRedux: IcartItem[] = useSelector((state: any) => state.cart.cartList)
+
+    const dispatch = useDispatch()
 
     const [finalPrice , setFinalPrice] = useState<number>(0)
 
@@ -49,7 +52,7 @@ function CartOnHeader() {
                         <span>تومان</span>
                     </p>
                 </p>
-                <button className={"w-full ring-red-300 ring-2 hover:bg-red-300 rounded py-2 text-sm text-gray-700 mt-2"}>خالی کردن سبد خرید</button>
+                <button className={"w-full ring-red-300 ring-2 hover:bg-red-300 rounded py-2 text-sm text-gray-700 mt-2"} onClick={()=> dispatch(removeAll())}>خالی کردن سبد خرید</button>
                 <Link to={"/cart"}>
                     <button className={"w-full ring-green-600 ring-2 bg-green-500 hover:bg-green-600 rounded py-2 text-gray-200 mt-2"}>ثبت سفارش نهایی</button>
                 </Link>

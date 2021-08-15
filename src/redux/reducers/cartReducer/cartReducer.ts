@@ -47,10 +47,13 @@ const cartReducer = createSlice({
                 state.cartList[productFinder].productTitleFA = action.payload.productTitleFA
                 state.cartList[productFinder].mainImg = action.payload.mainImg
             }
+        },
+        removeAll : (state)=>{
+            state.cartList = state.cartList.filter(item => item.productId == `cleared ${Math.random()}`)
         }
 
     }
 })
 
-export const {add, remove, editNumber, syncData} = cartReducer.actions
+export const {add, remove, editNumber, syncData, removeAll} = cartReducer.actions
 export default cartReducer.reducer
