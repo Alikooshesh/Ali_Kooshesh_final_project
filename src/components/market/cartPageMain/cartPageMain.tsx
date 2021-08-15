@@ -28,6 +28,7 @@ function CartPageMain() {
             offPriceTemp = offPriceTemp + ((cartItemsRedux[i].price * cartItemsRedux[i].offPercent / 100)* cartItemsRedux[i].number)
         }
 
+        cartItemsRedux.length == 0 && setPostPrice(0)
         setFinalPrice(finalPriceTemp >= 1000000 ? finalPriceTemp : finalPriceTemp - postPrice)
         setFullPrice(fullPriceTemp)
         setOffPrice(offPriceTemp)
@@ -42,6 +43,7 @@ function CartPageMain() {
 
             <div className={"w-full flex px-0 lg:px-64 pt-3 font-anjoman"}>
                 <div className={"w-full md:w-8/12 bg-gray-100 rounded-lg py-2 px-3"}>
+                    {cartItemsRedux.length == 0 && <p className={"text-2xl text-red-500 text-center mt-2"}>سبد خرید شما خالیست</p>}
                     {cartItemsRedux.map(item => {
                         return(
                             <div className={"w-full flex justify-between border-b-2 py-2"}>
@@ -92,11 +94,11 @@ function CartPageMain() {
                             </div>
                             <div className={"w-full flex"}>
                                 <p className={"w-full text-sm text-gray-500 text-right"}>بسته بندی و ارسال :</p>
-                                <p className={"w-6/12 text-gray-600 text-sm text-left"}>{postPrice} تومان</p>
+                                <p className={"w-6/12 text-gray-600 text-sm text-left"}>{postPrice <= 0 ? '0' : postPrice} تومان</p>
                             </div>
                             <div className={"w-full flex mt-3"}>
                                 <p className={"w-full text-sm text-gray-500 text-right"}>قابل پرداخت :</p>
-                                <p className={"w-6/12 text-gray-700 text-left"}>{finalPrice} تومان</p>
+                                <p className={"w-6/12 text-gray-700 text-left"}>{finalPrice <= 0 ? '0' : finalPrice} تومان</p>
                             </div>
                         </div>
 
