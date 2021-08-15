@@ -4,7 +4,7 @@ import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
 import FilterBox from "../stableParts/filterBox/filterBox";
 import {createContext, useEffect, useState} from "react";
-import {useParams} from "react-router-dom"
+import {useLocation, useParams} from "react-router-dom"
 import MobileFilterOffcanvas from "../stableParts/filterBox/mobileFilterOffcanvas/mobileFilterOffcanvas";
 import axios from "axios";
 import {Iproduct} from "../../../interfaces/apiInterfaces";
@@ -19,6 +19,9 @@ function CategoryPageMain() {
     const [categoryData , setCategoryData] = useState<any>([])
     const urlParams:{categoryID : string} = useParams()
 
+    const [sort,setSort] = useState({mostSell : true , highPrice : false , lowPrice : false})
+    const [sortedproductList , setSortedProductList] = useState([])
+
     useEffect(()=> {
         axios.get(`https://pcmarket-server-api.herokuapp.com/categoryWithProducts/${urlParams.categoryID}`)
             .then(categoryData => {
@@ -28,6 +31,26 @@ function CategoryPageMain() {
             })
             .catch(err => console.log(err))
     },[urlParams])
+
+    useEffect(()=>{
+        if(sort.mostSell){
+            categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(a.sold) - parseFloat(b.sold)))
+            console.log({sortedproductList})
+        }else if(sort.lowPrice){
+            categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(a.price) - parseFloat(b.price)))
+            console.log({sortedproductList})
+        }else if(sort.highPrice){
+            categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(b.price) - parseFloat(a.price)))
+            console.log({sortedproductList})
+        }
+    },[categoryData,sort])
+
+    function sortHandle(sortName:string) {
+        let sortTemp:any = {mostSell : false , highPrice : false , lowPrice : false}
+        sortTemp[sortName] = true
+        console.log(sortTemp[sortName])
+        setSort(sortTemp)
+    }
 
     return(
         <CategoryDataContext.Provider value={categoryData}>
@@ -52,10 +75,10 @@ function CategoryPageMain() {
                         </Carousel>
                     </section>
 
-                    {categoryData.suggestedProducts && console.log(categoryData.suggestedProducts)}
+                    {categoryData.suggestedProducts && console.log(categoryData.suggestedProducts[0])}
 
                     <section className={"w-full px-0 lg:px-28 mt-3"}>
-                        <ProductBox boxName={"کالا های پیشنهادی"} productList={['ca1pd1', 'ca2pd1']}/>
+                        <ProductBox boxName={"کالا های پیشنهادی"} productList={['ca1pd1','ca1pd2']}/>
                     </section>
 
 
@@ -71,9 +94,9 @@ function CategoryPageMain() {
                             <div className={"w-full p-3 border-b-2 border-gray-300 font-anjoman"}>
                                 <div className={"w-full flex justify-center md:justify-start items-center "}>
                                     <FaSortAmountDownAlt className={"text-xl ml-2"}/>
-                                    <button className={"p-2 pt-1 border-1 border-green-500 bg-gray-300 rounded ml-3"}>پر فروش ترین</button>
-                                    <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>ارزانترین</button>
-                                    <button className={"p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3"}>گرانترین</button>
+                                    <button className={`p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3 ${sort.mostSell && 'border-green-500 bg-gray-300 hover:border-green-500'}`} onClick={()=> sortHandle('mostSell')}>پر فروش ترین</button>
+                                    <button className={`p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3 ${sort.lowPrice && 'border-green-500 bg-gray-300 hover:border-green-500'}`} onClick={()=> sortHandle('lowPrice')}>ارزانترین</button>
+                                    <button className={`p-2 pt-1 border-1 border-transparent hover:border-black bg-gray-200 rounded ml-3 ${sort.highPrice && 'border-green-500 bg-gray-300 hover:border-green-500'}`} onClick={()=> sortHandle('highPrice')}>گرانترین</button>
                                 </div>
                                 <div className={"flex items-center justify-center md:hidden mx-auto mt-2 p-2 pt-1 border-1 border-transparent focus:border-green-500 bg-gray-200 rounded"} onClick={() => setMobileFilterOffCanShow(true)}>
                                     <FaFilter className={"ml-2"}/>
@@ -81,7 +104,7 @@ function CategoryPageMain() {
                                 </div>
                             </div>
                             <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 p-3 font-anjoman"}>
-                                {categoryData.product && categoryData.product.map((item:Iproduct) => {
+                                {sortedproductList && sortedproductList.map((item:Iproduct) => {
                                     return(
                                         <div className={"relative w-64 mt-2 mx-auto"}>
                                             <ProductCard id={item.productID} name={item.productName} img={item.img[0]} price={item.price} offPercent={item.offPercent} exist={item.exist}/>
