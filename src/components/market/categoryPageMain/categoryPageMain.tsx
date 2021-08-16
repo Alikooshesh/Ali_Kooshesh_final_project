@@ -4,7 +4,7 @@ import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
 import FilterBox from "../stableParts/filterBox/filterBox";
 import {createContext, useEffect, useState} from "react";
-import {useLocation, useParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import MobileFilterOffcanvas from "../stableParts/filterBox/mobileFilterOffcanvas/mobileFilterOffcanvas";
 import axios from "axios";
 import {Iproduct} from "../../../interfaces/apiInterfaces";
@@ -50,7 +50,6 @@ function CategoryPageMain() {
     function sortHandle(sortName:string) {
         let sortTemp:any = {mostSell : false , highPrice : false , lowPrice : false}
         sortTemp[sortName] = true
-        console.log(sortTemp[sortName])
         setSort(sortTemp)
     }
 
