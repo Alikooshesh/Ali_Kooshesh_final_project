@@ -33,18 +33,25 @@ function CategoryPageMain() {
     },[urlParams])
 
     useEffect(()=>{
-        if(sort.mostSell){
-            categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.sold - b.sold))
-            console.log({sortedproductList})
-        }else if(sort.lowPrice){
-            categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.price - b.price))
-            console.log({sortedproductList})
-        }else if(sort.highPrice){
-            categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> b.price - a.price))
-            console.log({sortedproductList})
-        }else{
-            categoryData.product && setSortedProductList(categoryData.product)
+        async function resetSort(){
+            await setSortedProductList([])
+
+            if(sort.mostSell){
+                await categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.sold - b.sold))
+                console.log({sortedproductList})
+            }else if(sort.lowPrice){
+                await categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.price - b.price))
+                console.log({sortedproductList})
+            }else if(sort.highPrice){
+                await categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> b.price - a.price))
+                await setSortedProductList(sortedproductList.reverse())
+                console.log({sortedproductList})
+            }else{
+                await categoryData.product && setSortedProductList(categoryData.product)
+            }
         }
+
+        resetSort()
     },[categoryData,sort])
 
     function sortHandle(sortName:string) {
@@ -107,7 +114,7 @@ function CategoryPageMain() {
                             <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 p-3 font-anjoman"}>
                                 {sortedproductList && sortedproductList.map((item:Iproduct) => {
                                     return(
-                                        <div className={"relative w-64 mt-2 mx-auto"}>
+                                        <div key={`pr ${item.productID} ${Math.random()}`} className={"relative w-64 mt-2 mx-auto"}>
                                             <ProductCard id={item.productID} name={item.productName} img={item.img[0]} price={item.price} offPercent={item.offPercent} exist={item.exist}/>
                                         </div>
                                     )
