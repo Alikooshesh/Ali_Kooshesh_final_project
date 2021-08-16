@@ -42,6 +42,8 @@ function CategoryPageMain() {
         }else if(sort.highPrice){
             categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(b.price) - parseFloat(a.price)))
             console.log({sortedproductList})
+        }else{
+            categoryData.product && setSortedProductList(categoryData.product)
         }
     },[categoryData,sort])
 
