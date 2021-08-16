@@ -4,16 +4,21 @@ import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
 import FilterBox from "../stableParts/filterBox/filterBox";
 import {createContext, useEffect, useState} from "react";
-import {useParams} from "react-router-dom"
+import {useHistory, useLocation, useParams} from "react-router-dom"
 import MobileFilterOffcanvas from "../stableParts/filterBox/mobileFilterOffcanvas/mobileFilterOffcanvas";
 import axios from "axios";
 import {Iproduct} from "../../../interfaces/apiInterfaces";
 
-
-
 export const CategoryDataContext = createContext<any>([])
 
-function CategoryPageMain() {
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
+
+function CategoryPageMain(props:any) {
+
+    const query = useQuery()
+    const history = useHistory()
 
     const [mobileFilterOffCanShow, setMobileFilterOffCanShow] = useState(false);
     const [categoryData , setCategoryData] = useState<any>([])
@@ -54,14 +59,25 @@ function CategoryPageMain() {
         resetSort()
     },[categoryData,sort])
 
-    function sortHandle(sortName:string) {
+    useEffect(()=>{
+        history.push(`${props.location.pathname}?sort=${(sort.lowPrice && 'lowPrice') || (sort.highPrice && 'highPrice') || (sort.mostSell && 'mostSell')}`)
+    },[sort])
+
+    useEffect(()=>{
+        if (query.get("sort") == "mostSell" || query.get("sort") == "highPrice" || query.get("sort") == "lowPrice"){
+            sortHandle(query.get("sort"))
+        }
+    },[query.get("sort")])
+
+    function sortHandle(sortName:string|null) {
         let sortTemp:any = {mostSell : false , highPrice : false , lowPrice : false}
-        sortTemp[sortName] = true
+        sortName ? sortTemp[sortName] = true : console.log("bad Sort Name")
         setSort(sortTemp)
     }
 
     return(
         <CategoryDataContext.Provider value={categoryData}>
+            {console.log(props.location.pathname)}
             <div className={"w-full px-3 pt-3"} data-aos="zoom-in-up">
                 <div className={"w-full h-auto md:h-14 flex justify-center items-center rounded text-center font-anjoman text-sm bg-indigo-600 text-white py-2 px-1 md:py-0"}>
                     به دلیل تعطیلات ، در صورت عدم پاسخگویی پشتیبانی تلفنی ، از پشتیبانی آنلاین سایت استفاده کنید .

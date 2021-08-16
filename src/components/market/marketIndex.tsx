@@ -13,7 +13,7 @@ import {syncData} from "../../redux/reducers/cartReducer/cartReducer";
 
 export const CategoryListContext = createContext<any>([])
 
-function MarketIndex() {
+function MarketIndex(props:any) {
 
     const history = useLocation()
     const dispatch = useDispatch()
@@ -36,7 +36,7 @@ function MarketIndex() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [history])
+    }, [props.location.pathname])
 
     useEffect(() => cartPriceChecker(), [cartItemsRedux])
 
