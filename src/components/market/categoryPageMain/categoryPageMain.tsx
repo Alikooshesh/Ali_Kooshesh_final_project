@@ -63,12 +63,6 @@ function CategoryPageMain(props:any) {
         history.push(`${props.location.pathname}?sort=${(sort.lowPrice && 'lowPrice') || (sort.highPrice && 'highPrice') || (sort.mostSell && 'mostSell')}`)
     },[sort])
 
-    useEffect(()=>{
-        if (query.get("sort") == "mostSell" || query.get("sort") == "highPrice" || query.get("sort") == "lowPrice"){
-            sortHandle(query.get("sort"))
-        }
-    },[query.get("sort")])
-
     function sortHandle(sortName:string|null) {
         let sortTemp:any = {mostSell : false , highPrice : false , lowPrice : false}
         sortName ? sortTemp[sortName] = true : console.log("bad Sort Name")
