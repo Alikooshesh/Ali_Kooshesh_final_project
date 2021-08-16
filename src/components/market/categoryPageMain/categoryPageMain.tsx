@@ -34,13 +34,13 @@ function CategoryPageMain() {
 
     useEffect(()=>{
         if(sort.mostSell){
-            categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(a.sold) - parseFloat(b.sold)))
+            categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.sold - b.sold))
             console.log({sortedproductList})
         }else if(sort.lowPrice){
-            categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(a.price) - parseFloat(b.price)))
+            categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.price - b.price))
             console.log({sortedproductList})
         }else if(sort.highPrice){
-            categoryData.product && setSortedProductList(categoryData.product.sort((a:any,b:any)=> parseFloat(b.price) - parseFloat(a.price)))
+            categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> b.price - a.price))
             console.log({sortedproductList})
         }else{
             categoryData.product && setSortedProductList(categoryData.product)
