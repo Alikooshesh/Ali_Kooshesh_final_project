@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import { FaSearch , FaUser , FaShoppingCart , FaBars } from "react-icons/fa";
 import DesktopCategory from "../desktopCategory/desktopCategory";
 import CartOnHeader from "../cart/cartOnHeader/cartOnHeader";
@@ -8,11 +8,14 @@ import {useSelector} from "react-redux";
 
 function Header (props:{setOffCanvShow:Function}) {
 
+    const history = useHistory()
+
     const userAuthRedux = useSelector((state:any) => state.userAuth)
     const cartItemsRedux: IcartItem[] = useSelector((state: any) => state.cart.cartList)
 
     const [categoryShow , setCategoryShow] = useState(false)
     const [headerCartShow , setHeaderCartShow] = useState(false)
+    const [searchBox , setSearchBox] = useState<string>("")
 
     return(
         <header className={"w-full h-auto px-5 lg:px-36 pt-5 pb-3 shadow-md bg-white sticky top-0 z-50"}>
@@ -28,9 +31,12 @@ function Header (props:{setOffCanvShow:Function}) {
                     </div>
                 </div>
                 <div className={"w-full h-11 flex justify-between md:mr-10"}>
-                    <div className={"w-8/12 lg:w-6/12 bg-gray-100 rounded border-transparent px-3 flex"}>
+                    <div className={"w-8/12 lg:w-6/12 flex items-center bg-gray-100 rounded border-transparent px-3 pl-0 flex"}>
                         <FaSearch className={"h-full text-2xl text-gray-400"}/>
-                        <input placeholder={"جستجو ..."} className={"w-full px-2 bg-transparent placeholder-gray-400 text-gray-500 font-anjoman outline-none"}/>
+                        <input placeholder={"جستجو ..."} className={"w-full px-2 bg-transparent placeholder-gray-400 text-gray-500 font-anjoman outline-none"}
+                            value={searchBox} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setSearchBox(e.target.value)}/>
+                        <button className={"h-4/5 px-2 pb-1 ring-2 ring-green-500 rounded-sm hover:bg-green-500 hover:text-gray-100 font-anjoman text-green-500"}
+                            onClick={()=> searchBox.length > 0 && history.push(`/search/${searchBox}`)}>جستجو</button>
                     </div>
                     <div className={"relative flex"} onMouseLeave={()=> setHeaderCartShow(false)}>
                         <div className={"pl-3 border-l-2 ml-3 mb-1"}>
