@@ -30,6 +30,7 @@ function CategoryPageMain(props:any) {
     const contextValue = {categoryData : categoryData , setCategoryData : setCategoryData}
 
     useEffect(()=> {
+        setCategoryData([])
         axios.get(`https://pcmarket-server-api.herokuapp.com/categoryWithProducts/${urlParams.categoryID}`)
             .then(categoryData => {
                 setCategoryData(categoryData.data[0])
@@ -37,7 +38,7 @@ function CategoryPageMain(props:any) {
                 console.log(`axios categoryID ${urlParams.categoryID}`)
             })
             .catch(err => console.log(err))
-    },[urlParams])
+    },[urlParams.categoryID])
 
     useEffect(()=>{
         async function resetSort(){
