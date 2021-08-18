@@ -57,7 +57,6 @@ function MarketIndex(props:any) {
 
     return (
         <>
-            {console.log(cartItemsRedux)}
             <CategoryListContext.Provider value={categoryList}>
                 <Header setOffCanvShow={setMobileSideBarShow}/>
                 <main className={"relative"}>

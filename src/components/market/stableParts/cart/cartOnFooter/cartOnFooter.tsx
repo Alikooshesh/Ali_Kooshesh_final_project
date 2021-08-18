@@ -30,7 +30,7 @@ function CartOnFooter() {
                 </p>
 
                 <div className={"w-6/12"}>
-                    <Link to={"/cart"}>
+                    <Link to={"/pay"}>
                         <button className={"w-full h-full ring-green-600 ring-2 bg-green-500 hover:bg-green-600 rounded text-gray-200"}>ثبت سفارش نهایی</button>
                     </Link>
                 </div>
