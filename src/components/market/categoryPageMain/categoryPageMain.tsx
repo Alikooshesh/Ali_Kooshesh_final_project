@@ -27,6 +27,8 @@ function CategoryPageMain(props:any) {
     const [sort,setSort] = useState({mostSell : true , highPrice : false , lowPrice : false})
     const [sortedproductList , setSortedProductList] = useState([])
 
+    const contextValue = {categoryData : categoryData , setCategoryData : setCategoryData}
+
     useEffect(()=> {
         axios.get(`https://pcmarket-server-api.herokuapp.com/categoryWithProducts/${urlParams.categoryID}`)
             .then(categoryData => {
@@ -70,8 +72,7 @@ function CategoryPageMain(props:any) {
     }
 
     return(
-        <CategoryDataContext.Provider value={categoryData}>
-            {console.log(props.location.pathname)}
+        <CategoryDataContext.Provider value={contextValue}>
             <div className={"w-full px-3 pt-3"} data-aos="zoom-in-up">
                 <div className={"w-full h-auto md:h-14 flex justify-center items-center rounded text-center font-anjoman text-sm bg-indigo-600 text-white py-2 px-1 md:py-0"}>
                     به دلیل تعطیلات ، در صورت عدم پاسخگویی پشتیبانی تلفنی ، از پشتیبانی آنلاین سایت استفاده کنید .
@@ -121,6 +122,7 @@ function CategoryPageMain(props:any) {
                                     فیلتر های بیشتر
                                 </div>
                             </div>
+                            {sortedproductList.length == 0 && <p className={"w-full text-red-500 text-center mt-3 text-3xl font-anjoman"}>نتیجه ای برای جستجوی شما یافت نشد</p>}
                             <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 p-3 font-anjoman"}>
                                 {sortedproductList && sortedproductList.map((item:Iproduct) => {
                                     return(

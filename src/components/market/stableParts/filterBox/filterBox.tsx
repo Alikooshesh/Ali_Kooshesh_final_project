@@ -1,9 +1,12 @@
-import React, {createContext, FormEventHandler, useContext, useState} from "react";
+import React, {createContext, FormEventHandler, useContext, useEffect, useState} from "react";
 import {CategoryDataContext} from "../../categoryPageMain/categoryPageMain";
+import {forEach} from "react-bootstrap/ElementChildren";
+import axios from "axios";
 
 function FilterBox() {
 
-    const categoryData = useContext(CategoryDataContext)
+    const categoryData = useContext(CategoryDataContext).categoryData
+    const setCategoryData = useContext(CategoryDataContext).setCategoryData
 
     const [categoryFilters , setCategoryFilters] = useState<any>({})
     function radioBtnChangeHandle(e:{target:any}) {
@@ -13,6 +16,19 @@ function FilterBox() {
         newVal[name] = value
         setCategoryFilters({...newVal})
     }
+
+    useEffect(()=>{
+        let filters = []
+        for (const key in categoryFilters){
+            filters.push(categoryFilters[key])
+        }
+        axios.post('https://pcmarket-server-api.herokuapp.com/filterProduct/',{filters : filters})
+            .then(res => {
+                setCategoryData({...categoryData , product : res.data})
+            })
+            .catch(err => console.log(err.data))
+
+    },[categoryFilters])
 
     return(
         <div className={"w-full h-auto bg-transparent font-anjoman"}>
