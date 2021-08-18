@@ -63,9 +63,9 @@ function Header (props:{setOffCanvShow:Function}) {
                     <button className={"hover:text-green-500"}>دسته بندی کالا ها</button>
                 </div>
                 <div className={`${!categoryShow && 'hidden'} absolute w-full top-7 h-50`}><DesktopCategory/></div>
-                <button className={"hover:text-green-500 text-sm ml-8"}>لپ تاپ ها</button>
-                <button className={"hover:text-green-500 text-sm ml-8"}>کارت گرافیک ها</button>
-                <button className={"hover:text-green-500 text-sm ml-8"}>هدفون ها</button>
+                <Link to={'/category/ca2'}><button className={"hover:text-green-500 text-sm ml-8"}>لپ تاپ ها</button></Link>
+                <Link to={'/category/ca1'}><button className={"hover:text-green-500 text-sm ml-8"}>کارت گرافیک ها</button></Link>
+                <Link to={'/category/ca3'}><button className={"hover:text-green-500 text-sm ml-8"}>هدفون ها</button></Link>
             </div>
         </header>
     )
