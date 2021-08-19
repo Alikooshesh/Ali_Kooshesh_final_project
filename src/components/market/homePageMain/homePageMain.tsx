@@ -9,7 +9,7 @@ function HomePageMain() {
     const lastSeenProducts = useSelector((state:any)=> state.productSeen.productList)
 
     return(
-        <div className={"w-full px-3 pt-3"} data-aos="zoom-in-up">
+        <div className={"w-full px-3 pt-3"}>
             <div className={"w-full h-auto md:h-14 flex justify-center items-center rounded text-center font-anjoman text-sm bg-indigo-600 text-white py-2 px-1 md:py-0"}>
                 به دلیل تعطیلات ، در صورت عدم پاسخگویی پشتیبانی تلفنی ، از پشتیبانی آنلاین سایت استفاده کنید .
             </div>
