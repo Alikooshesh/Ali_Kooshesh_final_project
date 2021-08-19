@@ -79,7 +79,7 @@ function CategoryPageMain(props:any) {
                         <Carousel>
                             <CarouselItem>
                                 <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
-                                    <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                                    <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627460880-o3za7CbU3Tzstz1z.jpg"}/>
                                 </div>
                             </CarouselItem>
                             <CarouselItem>
@@ -93,7 +93,7 @@ function CategoryPageMain(props:any) {
                     {categoryData.suggestedProducts && console.log(categoryData.suggestedProducts[0])}
 
                     <section className={"w-full px-0 lg:px-28 mt-3"}>
-                        <ProductBox boxName={"کالا های پیشنهادی"} productList={['ca1pd1','ca1pd2']}/>
+                        <ProductBox boxName={"کالا های پیشنهادی"} productList={['ca2pd1', 'ca2pd2','ca1pd2','ca2pd3']}/>
                     </section>
 
 

@@ -142,7 +142,7 @@ function ProductMainPage() {
                 </section>
 
                 <section className={"hidden md:block mt-3"}><ProductBox boxName={"کالا های مشابه"}
-                                                                        productList={['ca1pd1', 'ca2pd1']}/></section>
+                                                                        productList={['ca2pd1', 'ca2pd2','ca1pd2','ca2pd3']}/></section>
 
                 <section className={"w-full relative mt-3 md:flex"}>
                     <div
