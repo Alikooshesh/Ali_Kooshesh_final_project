@@ -40,7 +40,7 @@ function CategoryPageMain(props:any) {
             await setSortedProductList([])
 
             if(sort.mostSell){
-                await categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.sold - b.sold))
+                await categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> b.sold - a.sold))
                 console.log({sortedproductList})
             }else if(sort.lowPrice){
                 await categoryData.product && setSortedProductList(categoryData.product.sort((a:Iproduct,b:Iproduct)=> a.price - b.price))
