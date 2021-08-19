@@ -8,10 +8,10 @@ import {RtopLevelRoutes} from "./routes/topLevelRoutes";
 
 function App() {
 
-    // useEffect(()=>{
-    //     AOS.init()
-    //     AOS.refresh()
-    // },[])
+    useEffect(()=>{
+        AOS.init()
+        AOS.refresh()
+    },[])
 
     return (
         <Router>
