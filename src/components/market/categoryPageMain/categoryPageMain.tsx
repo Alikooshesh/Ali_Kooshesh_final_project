@@ -4,7 +4,7 @@ import ProductCard from "../stableParts/productsBox/productCard/productCard";
 import ProductBox from "../stableParts/productsBox/productBox";
 import FilterBox from "../stableParts/filterBox/filterBox";
 import {createContext, useEffect, useState} from "react";
-import {useHistory, useLocation, useParams} from "react-router-dom"
+import {useHistory, Link, useParams} from "react-router-dom"
 import MobileFilterOffcanvas from "../stableParts/filterBox/mobileFilterOffcanvas/mobileFilterOffcanvas";
 import axios from "axios";
 import {Iproduct} from "../../../interfaces/apiInterfaces";
@@ -78,14 +78,20 @@ function CategoryPageMain(props:any) {
                     <section className={"w-full 2xl:h-96 2xl:px-52"}>
                         <Carousel>
                             <CarouselItem>
-                                <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
-                                    <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627460880-o3za7CbU3Tzstz1z.jpg"}/>
-                                </div>
+                                <Link to={'/product/ca1pd2'}>
+                                    <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
+                                        <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627460880-o3za7CbU3Tzstz1z.jpg"}/>
+                                    </div>
+                                </Link>
+
                             </CarouselItem>
                             <CarouselItem>
-                                <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
-                                    <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
-                                </div>
+                                <Link to={'/product/ca1pd2'}>
+                                    <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
+                                        <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627110439-ygVvqmNHoKqUTWo9.jpg"}/>
+                                    </div>
+                                </Link>
+
                             </CarouselItem>
                         </Carousel>
                     </section>
