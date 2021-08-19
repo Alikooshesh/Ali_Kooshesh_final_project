@@ -59,7 +59,7 @@ function ProductBox(props:{boxName:string , productList:string[]}) {
                                 slidesPerView : 2,
                                 spaceBetween : 10
                             },
-                            1350:{
+                            1370:{
                                 slidesPerView : 3,
                                 spaceBetween : 10
                             },
