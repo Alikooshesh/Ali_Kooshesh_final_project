@@ -11,13 +11,8 @@ import {Iproduct} from "../../../interfaces/apiInterfaces";
 
 export const CategoryDataContext = createContext<any>([])
 
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-}
-
 function CategoryPageMain(props:any) {
 
-    const query = useQuery()
     const history = useHistory()
 
     const [mobileFilterOffCanShow, setMobileFilterOffCanShow] = useState(false);
