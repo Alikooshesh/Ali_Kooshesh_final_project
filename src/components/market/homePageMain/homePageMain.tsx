@@ -25,14 +25,14 @@ function HomePageMain() {
                             </CarouselItem>
                             <CarouselItem>
                                 <div className={"w-full h-full rounded-lg"}>
-                                    <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                                    <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/406241767eed0028c14a493524669e65a7d825fb_1628611218.gif"}/>
                                 </div>
                             </CarouselItem>
                         </Carousel>
                     </div>
                     <div className={"hidden md:flex flex-col w-4/12 h-56 mr-1"}>
                         <div className={"w-full rounded-lg mb-1"}>
-                            <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                            <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/406241767eed0028c14a493524669e65a7d825fb_1628611218.gif"}/>
                         </div>
                         <div className={"w-full rounded-lg"}>
                             <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
@@ -44,10 +44,10 @@ function HomePageMain() {
 
                 <div className={"w-full h-64 mt-3 flex justify-between"}>
                     <div className={"w-full md:w-6/12 h-full rounded-lg shadow-sm pl-1"}>
-                        <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                        <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/406241767eed0028c14a493524669e65a7d825fb_1628611218.gif"}/>
                     </div>
                     <div className={"hidden md:block md:w-6/12 h-full rounded-lg shadow-md pr-1"}>
-                        <img className={"w-full h-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                        <img className={"w-full h-full rounded-lg"} src={"https://s4.uupload.ir/files/1627110439-ygvvqmnhokqutwo9_1ty7.jpg"}/>
                     </div>
                 </div>
 

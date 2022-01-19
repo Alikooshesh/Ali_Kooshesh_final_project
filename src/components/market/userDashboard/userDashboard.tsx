@@ -1,14 +1,28 @@
 import CustomRoute from "../../routerMaker/customRoute";
 import {Switch} from "react-router-dom";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {RuserDashboardRoutes} from "../../../routes/userDashboardRoutes";
 import { Link } from 'react-router-dom';
-import {useDispatch} from "react-redux";
-import {logout} from "../../../redux/reducers/userAuthReducer/userAuthReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {login, logout} from "../../../redux/reducers/userAuthReducer/userAuthReducer";
+import axios from "axios";
 
 function UserDashboard() {
 
+    const userAuthRedux = useSelector((state:any) => state.userAuth)
+
     const dispatch = useDispatch()
+
+    const [walletBalance , setWalletBalance] = useState<number>(0)
+
+    useEffect(()=>{
+        axios.get(`https://pcmarket-server-api.herokuapp.com/userData/${userAuthRedux.tokenId}`)
+            .then(res => {
+                dispatch(login({userId : res.data.userId , fullName : res.data.fullName , phoneNumber : res.data.phone , tokenId : userAuthRedux.tokenId}))
+                setWalletBalance(+res.data.wallet)
+            })
+            .catch(err => console.log(err))
+    },[])
 
     return(
         <div className={"w-full px-5 lg:px-36 pt-2 mt-3 flex flex-col md:flex-row"}>
@@ -18,8 +32,8 @@ function UserDashboard() {
                         <img className={"w-full h-full rounded-full"} src={"https://icon-library.com/images/white-profile-icon/white-profile-icon-24.jpg"}/>
                     </div>
                     <div className={"w-1/2 mr-2"}>
-                        <p className={"text-gray-600"}>رضا سرمست</p>
-                        <p className={"text-xs text-gray-400"}>09305634582</p>
+                        <p className={"text-gray-600"}>{userAuthRedux.fullName}</p>
+                        <p className={"text-xs text-gray-400"}>{userAuthRedux.phoneNumber}</p>
                     </div>
                     <Link to={"/dashboard/account"}>
                         <button className={"w-auto text-left text-green-600"}>ویرایش اطلاعات</button>
@@ -27,7 +41,7 @@ function UserDashboard() {
                 </div>
 
                 <div className={"font-anjoman py-1 border-b-2"}>
-                    <p className={"text-center"}>کیف پول : <span>0 ریال</span></p>
+                    <p className={"text-center"}>کیف پول : <span>{walletBalance} ریال</span></p>
                     <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>شارژ کیف پول</button>
                     <button className={"w-full p-2 text-right text-lg text-gray-500 hover:text-green-500"}>اطلاعات پرداخت های من</button>
                 </div>

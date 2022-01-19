@@ -14,10 +14,10 @@ const userAuthReducer = createSlice({
     reducers :{
         login : (state,action)=>{
             state.isLogin = true
-            state.userId = action.payload.userId
-            state.fullName = action.payload.fullName
-            state.phoneNumber = action.payload.phoneNumber
-            state.tokenId = action.payload.tokenId
+            action.payload.userId ? state.userId = action.payload.userId : state.userId = state.userId
+            action.payload.fullName ? state.fullName = action.payload.fullName : state.fullName = state.fullName
+            action.payload.phoneNumber ? state.phoneNumber = action.payload.phoneNumber : state.phoneNumber = state.phoneNumber
+            action.payload.tokenId ? state.tokenId = action.payload.tokenId : state.tokenId = state.tokenId
         },
         logout : (state)=>{
             state.isLogin = false

@@ -18,10 +18,12 @@ function Header (props:{setOffCanvShow:Function}) {
             <div className={"w-full h-auto flex flex-col md:flex-row items-center bg-white"}>
                 <div dir={"ltr"} className={"w-full md:w-auto flex justify-between h-auto items-end mb-5 md:mb-4"}>
 
-                    <div className={"flex items-end justify-center cursor-pointer"}>
-                        <p className={"text-5xl md:text-5xl font-bold text-green-500"}>PC</p>
-                        <p className={"text-2xl md:text-3xl font-normal text-gray-800 ml-1"}>Market</p>
-                    </div>
+                    <Link to={'/'}>
+                        <div className={"flex items-end justify-center cursor-pointer"}>
+                            <p className={"text-5xl md:text-5xl font-bold text-green-500"}>PC</p>
+                            <p className={"text-2xl md:text-3xl font-normal text-gray-800 ml-1"}>Market</p>
+                        </div>
+                    </Link>
                     <div className={"self-center"}>
                         <FaBars className={"h-full block md:hidden text-xl cursor-pointer"} onClick={()=> props.setOffCanvShow(true)}/>
                     </div>

@@ -36,7 +36,7 @@ function LoginPage() {
 
     function sendCodeBtnClick() {
         setErrText(false)
-        const phoneRegex:RegExp = /^(\+98|0098|98|0)?9\d{9}$/
+        const phoneRegex:RegExp = /^09\d{9}$/
 
         if(phoneRegex.test(`${phoneNumber}`)){
             if (!loading){
