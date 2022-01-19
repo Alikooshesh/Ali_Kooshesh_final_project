@@ -80,7 +80,7 @@ function CategoryPageMain(props:any) {
                             <CarouselItem>
                                 <Link to={'/product/ca1pd2'}>
                                     <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
-                                        <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627460880-o3za7CbU3Tzstz1z.jpg"}/>
+                                        <img className={"w-full h-full rounded-lg"} src={"https://s4.uupload.ir/files/1627110439-ygvvqmnhokqutwo9_5qp8.jpg"}/>
                                     </div>
                                 </Link>
 
@@ -88,7 +88,7 @@ function CategoryPageMain(props:any) {
                             <CarouselItem>
                                 <Link to={'/product/ca1pd2'}>
                                     <div className={"w-full h-full 2xl:h-96 rounded-lg"}>
-                                        <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627110439-ygVvqmNHoKqUTWo9.jpg"}/>
+                                        <img className={"w-full h-full rounded-lg"} src={"https://s4.uupload.ir/files/1628101377-lmgz9xzkanen2ixp_tgjw.jpg"}/>
                                     </div>
                                 </Link>
 

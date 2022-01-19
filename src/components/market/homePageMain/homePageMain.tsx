@@ -40,13 +40,13 @@ function HomePageMain() {
 
                         <Link to={'/product/ca1pd2'}>
                             <div className={"w-full rounded-lg mb-1"}>
-                                <img className={"w-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/8/1628065140-oowuTOnxR3GIumZV.jpg"}/>
+                                <img className={"w-full rounded-lg"} src={"https://s4.uupload.ir/files/1628065140-oowutonxr3giumzv_vkmz.jpg"}/>
                             </div>
                         </Link>
 
                         <Link to={'/product/ca1pd2'}>
                             <div className={"w-full rounded-lg"}>
-                                <img className={"w-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/8/1628065078-tQpYsFCoIrS69c8V.jpg"}/>
+                                <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/406241767eed0028c14a493524669e65a7d825fb_1628611218.gif"}/>
                             </div>
                         </Link>
                     </div>
@@ -57,13 +57,13 @@ function HomePageMain() {
                 <div className={"w-full h-64 mt-3 flex justify-between"}>
                     <Link to={'/product/ca1pd2'}>
                         <div className={"w-full h-full rounded-lg shadow-sm pl-1"}>
-                            <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/8/1628101377-LmgZ9xzKAneN2iXp.jpg"}/>
+                            <img className={"w-full h-full rounded-lg"} src={"https://s4.uupload.ir/files/1628101377-lmgz9xzkanen2ixp_tgjw.jpg"}/>
                         </div>
                     </Link>
 
                     <Link to={'/product/ca1pd2'}>
                         <div className={"hidden md:block w-full h-full rounded-lg shadow-md pr-1"}>
-                            <img className={"w-full h-full rounded-lg"} src={"https://www.lioncomputer.com/uploads/image/2021/7/1627110439-ygVvqmNHoKqUTWo9.jpg"}/>
+                            <img className={"w-full h-full rounded-lg"} src={"https://s4.uupload.ir/files/1627110439-ygvvqmnhokqutwo9_5qp8.jpg"}/>
                         </div>
                     </Link>
 
