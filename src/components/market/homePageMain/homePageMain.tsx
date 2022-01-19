@@ -35,7 +35,7 @@ function HomePageMain() {
                             <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/406241767eed0028c14a493524669e65a7d825fb_1628611218.gif"}/>
                         </div>
                         <div className={"w-full rounded-lg"}>
-                            <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"}/>
+                            <img className={"w-full rounded-lg"} src={"https://dkstatics-public.digikala.com/digikala-adservice-banners/5c5ee7b6da7afebfb0ed9606d7495ae48253d7bb_1626776037.jpg?x-oss-process=image/quality,q_80"} alt={'فروش ویژه'}/>
                         </div>
                     </div>
                 </div>
